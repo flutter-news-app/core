@@ -21,7 +21,6 @@ void main() {
         expect(preferences.followedTopics, isNotEmpty);
         expect(preferences.savedHeadlines, isNotEmpty);
         expect(preferences.savedHeadlineFilters, isNotEmpty);
-        expect(preferences.savedSourceFilters, isNotEmpty);
       });
     });
 
@@ -59,10 +58,6 @@ void main() {
           updatedPreferences.savedHeadlineFilters,
           userContentPreferencesFixture.savedHeadlineFilters,
         );
-        expect(
-          updatedPreferences.savedSourceFilters,
-          userContentPreferencesFixture.savedSourceFilters,
-        );
       });
 
       test(
@@ -99,7 +94,6 @@ void main() {
         userContentPreferencesFixture.followedTopics,
         userContentPreferencesFixture.savedHeadlines,
         userContentPreferencesFixture.savedHeadlineFilters,
-        userContentPreferencesFixture.savedSourceFilters,
       ]);
     });
   });
