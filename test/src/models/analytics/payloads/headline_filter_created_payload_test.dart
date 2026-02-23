@@ -21,7 +21,7 @@ void main() {
       filterId: 'filter-456',
       criteriaSummary: criteriaSummary,
       isPinned: false,
-      deliveryTypes: const {},
+      deliveryTypes: {},
       wasPinningLimited: true,
     );
 

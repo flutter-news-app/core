@@ -39,7 +39,7 @@ final remoteConfigsFixturesData = <RemoteConfig>[
             },
           ),
         },
-        
+
         reactionsPerDay: {AccessTier.guest: 20, AccessTier.standard: 500},
         commentsPerDay: {AccessTier.guest: 0, AccessTier.standard: 50},
         reportsPerDay: {AccessTier.guest: 1, AccessTier.standard: 20},

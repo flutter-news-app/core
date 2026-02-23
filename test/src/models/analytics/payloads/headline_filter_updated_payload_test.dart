@@ -14,7 +14,7 @@ void main() {
       filterId: 'filter-123',
       newName: 'New Filter Name',
       pinStatusChangedTo: true,
-      deliveryTypesAdded: const [],
+      deliveryTypesAdded: [],
       deliveryTypesRemoved: [
         PushNotificationSubscriptionDeliveryType.breakingOnly,
       ],
@@ -63,7 +63,7 @@ void main() {
           filterId: 'filter-123',
           newName: 'New Filter Name',
           pinStatusChangedTo: true,
-          deliveryTypesAdded: const [],
+          deliveryTypesAdded: [],
           deliveryTypesRemoved: [
             PushNotificationSubscriptionDeliveryType.breakingOnly,
           ],
