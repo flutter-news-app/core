@@ -7,6 +7,15 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Removed
+- **BREAKING feat(filters)**: Removed the "Source Feed" feature. This includes the deletion of the `SavedSourceFilter` and `SourceFilterCriteria` models, along with their associated fixtures and tests.
+- **BREAKING feat(notifications)**: Deprecated and removed the "Weekly Roundup" (`dailyDigest`) notification feature. This involved removing the `dailyDigest` value from `PushNotificationSubscriptionDeliveryType` and `RewardType` enums.
+- **BREAKING feat(analytics)**: Removed analytics events related to source filters: `sourceFilterCreated`, `sourceFilterUpdated`, and `sourceFilterUsed`.
+
+### Changed
+- **refactor(models)**: Refactored `UserContentPreferences` and `UserLimitsConfig` to remove properties related to the deprecated source filters (`savedSourceFilters`).
+- **refactor(tests)**: Cleaned up all associated test files to remove references to deprecated models and enums, ensuring all tests pass.
+
 
 ## [1.9.0] - 2026-02-21
 
