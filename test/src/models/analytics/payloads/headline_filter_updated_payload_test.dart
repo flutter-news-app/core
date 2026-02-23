@@ -14,9 +14,7 @@ void main() {
       filterId: 'filter-123',
       newName: 'New Filter Name',
       pinStatusChangedTo: true,
-      deliveryTypesAdded: [
-        PushNotificationSubscriptionDeliveryType.dailyDigest,
-      ],
+      deliveryTypesAdded: const [],
       deliveryTypesRemoved: [
         PushNotificationSubscriptionDeliveryType.breakingOnly,
       ],
@@ -39,7 +37,7 @@ void main() {
           AnalyticsParameterKeys.filterId: 'filter-123',
           'newName': 'New Filter Name',
           'pinStatusChangedTo': true,
-          'deliveryTypesAdded': ['dailyDigest'],
+          'deliveryTypesAdded': <String>[],
           'deliveryTypesRemoved': ['breakingOnly'],
           'newCriteriaSummary': criteriaSummary.toJson(),
         });
@@ -65,9 +63,7 @@ void main() {
           filterId: 'filter-123',
           newName: 'New Filter Name',
           pinStatusChangedTo: true,
-          deliveryTypesAdded: [
-            PushNotificationSubscriptionDeliveryType.dailyDigest,
-          ],
+          deliveryTypesAdded: const [],
           deliveryTypesRemoved: [
             PushNotificationSubscriptionDeliveryType.breakingOnly,
           ],
