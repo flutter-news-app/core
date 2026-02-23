@@ -147,8 +147,7 @@ abstract final class AnalyticsParameterKeys {
   /// The unique identifier of a filter.
   ///
   /// Used in: [HeadlineFilterCreatedPayload], [HeadlineFilterUpdatedPayload],
-  /// [HeadlineFilterUsedPayload], [SourceFilterCreatedPayload],
-  /// [SourceFilterUpdatedPayload], [SourceFilterUsedPayload].
+  /// [HeadlineFilterUsedPayload].
   static const String filterId = 'filterId';
 
   /// The error code from a failed operation.
@@ -209,7 +208,7 @@ abstract final class AnalyticsParameterKeys {
   /// A boolean indicating if a filter is pinned.
   ///
   /// Used in: [HeadlineFilterCreatedPayload], [HeadlineFilterUpdatedPayload],
-  /// [SourceFilterCreatedPayload], [SourceFilterUpdatedPayload].
+  /// [HeadlineFilterCreatedPayload], [HeadlineFilterUpdatedPayload].
   static const String isPinned = 'isPinned';
 
   /// A list of notification delivery types for a filter.
@@ -220,8 +219,7 @@ abstract final class AnalyticsParameterKeys {
   /// A summary of a filter's criteria.
   ///
   /// Used in: [HeadlineFilterCreatedPayload], [HeadlineFilterUpdatedPayload],
-  /// [HeadlineFilterUsedPayload], [SourceFilterCreatedPayload],
-  /// [SourceFilterUpdatedPayload], [SourceFilterUsedPayload].
+  /// [HeadlineFilterUsedPayload].
   static const String criteriaSummary = 'criteriaSummary';
 
   /// The index of a step in a multi-step flow (e.g., app tour).
