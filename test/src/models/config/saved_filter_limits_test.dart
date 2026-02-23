@@ -7,12 +7,8 @@ void main() {
         .user
         .limits
         .savedHeadlineFilters[AccessTier.standard]!;
-
-    final minimalModel = remoteConfigsFixturesData[0]
-        .user
-        .limits
-        .savedSourceFilters[AccessTier.standard]!;
-
+    // A model with no notification subscriptions for testing minimal cases.
+    const minimalModel = SavedFilterLimits(total: 5, pinned: 2);
     final fullJson = fullModel.toJson();
     final minimalJson = minimalModel.toJson();
 
@@ -30,7 +26,6 @@ void main() {
             pinned: 10,
             notificationSubscriptions: {
               PushNotificationSubscriptionDeliveryType.breakingOnly: 10,
-              PushNotificationSubscriptionDeliveryType.dailyDigest: 10,
             },
           ),
         ),
@@ -43,10 +38,7 @@ void main() {
         equals([
           fullModel.total,
           fullModel.pinned,
-          {
-            PushNotificationSubscriptionDeliveryType.breakingOnly: 10,
-            PushNotificationSubscriptionDeliveryType.dailyDigest: 10,
-          },
+          {PushNotificationSubscriptionDeliveryType.breakingOnly: 10},
         ]),
       );
     });
