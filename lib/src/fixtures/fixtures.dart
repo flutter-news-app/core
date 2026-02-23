@@ -14,7 +14,6 @@ export 'ranked_list_cards.dart';
 export 'remote_configs.dart';
 export 'reports.dart';
 export 'saved_headline_filters.dart';
-export 'saved_source_filters.dart';
 export 'sources.dart';
 export 'topics.dart';
 export 'user_content_preferences.dart';
