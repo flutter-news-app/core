@@ -10,7 +10,6 @@ final List<UserRewards> userRewardsFixturesData = [
     userId: kRewardedUserId,
     activeRewards: {
       RewardType.adFree: DateTime.now().add(const Duration(days: 1)),
-      RewardType.dailyDigest: DateTime.now().add(const Duration(days: 5)),
     },
   ),
 
