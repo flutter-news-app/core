@@ -208,7 +208,6 @@ abstract final class AnalyticsParameterKeys {
   /// A boolean indicating if a filter is pinned.
   ///
   /// Used in: [HeadlineFilterCreatedPayload], [HeadlineFilterUpdatedPayload],
-  /// [HeadlineFilterCreatedPayload], [HeadlineFilterUpdatedPayload].
   static const String isPinned = 'isPinned';
 
   /// A list of notification delivery types for a filter.

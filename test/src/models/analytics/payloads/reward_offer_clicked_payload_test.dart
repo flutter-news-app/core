@@ -23,12 +23,6 @@ void main() {
         expect(instance1, equals(instance2));
       });
 
-      test('should not equate instances with different properties', () {
-        const instance1 = payload;
-        // This test is now trivial as there is only one RewardType.
-        expect(instance1, equals(payload));
-      });
-
       test('props list should contain all relevant fields', () {
         expect(payload.props, [payload.rewardType]);
       });
