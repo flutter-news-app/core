@@ -4,4 +4,7 @@
 enum AdPlatformType {
   /// Google AdMob platform.
   admob,
+
+  /// AppLovin (MAX) platform.
+  appLovin,
 }
