@@ -6,10 +6,14 @@ import 'package:meta/meta.dart';
 part 'localization_config.g.dart';
 
 /// {@template localization_config}
-/// Defines the language policy for the application instance.
+/// Defines the **active language policy** for this specific application instance.
 ///
-/// This configuration controls which languages are exposed to the end-user
-/// and which language is used as a fallback.
+/// While the [SupportedLanguage] enum defines the total technical capabilities
+/// of the codebase, this configuration acts as a **policy filter**, determining
+/// which of those languages are actually exposed to the end-user.
+///
+/// This allows for "white-label" or multi-tenant deployments where different
+/// apps share the same core code but support different languages.
 /// {@endtemplate}
 @immutable
 @JsonSerializable(explicitToJson: true, includeIfNull: true, checked: true)
@@ -24,8 +28,12 @@ class LocalizationConfig extends Equatable {
   factory LocalizationConfig.fromJson(Map<String, dynamic> json) =>
       _$LocalizationConfigFromJson(json);
 
-  /// The strict subset of languages that this app instance supports.
-  /// The mobile client must ONLY render these options in the language picker.
+  /// The strict subset of `SupportedLanguage` capabilities that are enabled
+  /// for this deployment.
+  ///
+  /// **Client Logic:** The mobile app must intersect `SupportedLanguage.values`
+  /// with this list. Only languages present in this list should be rendered
+  /// in the settings language picker.
   final List<SupportedLanguage> enabledLanguages;
 
   /// The primary fallback language if a user's device language isn't supported.
@@ -44,7 +52,7 @@ class LocalizationConfig extends Equatable {
     SupportedLanguage? defaultLanguage,
   }) {
     return LocalizationConfig(
-      enabledLanguages: supportedLanguages ?? this.enabledLanguages,
+      enabledLanguages: supportedLanguages ?? enabledLanguages,
       defaultLanguage: defaultLanguage ?? this.defaultLanguage,
     );
   }
