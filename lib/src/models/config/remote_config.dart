@@ -9,6 +9,7 @@ part 'remote_config.g.dart';
 ///
 /// This model serves as a central container for various configuration settings
 /// that can be fetched from a remote source.
+///
 /// There should typically be only one instance of this configuration,
 /// identified by a fixed ID (e.g., 'app_config').
 @JsonSerializable(explicitToJson: true, includeIfNull: true, checked: true)

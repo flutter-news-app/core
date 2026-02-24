@@ -12,13 +12,11 @@ void main() {
 
     test('should be equal to another instance with the same values', () {
       final otherModel = SavedHeadlineFilter(
-        id: kSavedHeadlineFilterId1,
-        userId: kAdminUserId,
-        name: 'US Tech News',
-        isPinned: true,
-        deliveryTypes: const {
-          PushNotificationSubscriptionDeliveryType.breakingOnly,
-        },
+        id: fullModel.id,
+        userId: fullModel.userId,
+        name: fullModel.name,
+        isPinned: fullModel.isPinned,
+        deliveryTypes: fullModel.deliveryTypes,
         criteria: fullModel.criteria,
       );
       expect(fullModel, equals(otherModel));
@@ -47,9 +45,12 @@ void main() {
     });
 
     test('copyWith should work correctly', () {
-      final copied = fullModel.copyWith(name: 'New Name', isPinned: false);
+      final copied = fullModel.copyWith(
+        name: {SupportedLanguage.en: 'New Name'},
+        isPinned: false,
+      );
 
-      expect(copied.name, 'New Name');
+      expect(copied.name, {SupportedLanguage.en: 'New Name'});
       expect(copied.isPinned, false);
       expect(copied.id, fullModel.id);
       expect(copied.userId, fullModel.userId);
@@ -66,7 +67,7 @@ void main() {
       const model = SavedHeadlineFilter(
         id: 'filter2',
         userId: 'user2',
-        name: 'Test Filter',
+        name: {SupportedLanguage.en: 'Test Filter'},
         isPinned: false,
         deliveryTypes: {},
         criteria: HeadlineFilterCriteria(

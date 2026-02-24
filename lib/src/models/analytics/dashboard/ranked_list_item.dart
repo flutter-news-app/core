@@ -1,3 +1,4 @@
+import 'package:core/src/enums/supported_language.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
@@ -27,7 +28,7 @@ class RankedListItem extends Equatable {
   final String entityId;
 
   /// The title or name to display for the item.
-  final String displayTitle;
+  final Map<SupportedLanguage, String> displayTitle;
 
   /// The numeric value of the metric used for ranking (e.g., view count).
   final num metricValue;
@@ -39,7 +40,7 @@ class RankedListItem extends Equatable {
   /// replaced with the new values.
   RankedListItem copyWith({
     String? entityId,
-    String? displayTitle,
+    Map<SupportedLanguage, String>? displayTitle,
     num? metricValue,
   }) {
     return RankedListItem(

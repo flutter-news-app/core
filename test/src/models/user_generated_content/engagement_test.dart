@@ -100,14 +100,14 @@ void main() {
       });
 
       test('returns a new instance with an updated comment', () {
-        final newComment = Comment(
-          language: languagesFixturesData.first,
+        const newComment = Comment(
+          language: SupportedLanguage.en,
           content: 'This is a new comment.',
           status: ModerationStatus.resolved,
         );
 
         final updatedEngagement = engagementFixture.copyWith(
-          comment: ValueWrapper(newComment),
+          comment: const ValueWrapper(newComment),
         );
 
         expect(updatedEngagement.comment, newComment);

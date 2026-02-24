@@ -53,7 +53,9 @@ void main() {
       test('instances with different props are not equal', () {
         final source1 = sourceFixture.copyWith();
         final source2 = sourceFixture.copyWith(id: 'different-id');
-        final source3 = sourceFixture.copyWith(name: 'Different Name');
+        final source3 = sourceFixture.copyWith(
+          name: {SupportedLanguage.en: 'Different Name'},
+        );
         expect(source1, isNot(equals(source2)));
         expect(source1.hashCode, isNot(equals(source2.hashCode)));
         expect(source1, isNot(equals(source3)));
@@ -95,7 +97,7 @@ void main() {
       });
 
       test('updates individual fields correctly', () {
-        const updatedName = 'Updated Source Name';
+        const updatedName = {SupportedLanguage.en: 'Updated Source Name'};
         const updatedLogo = 'https://example.com/logo.png';
         const updatedMediaAssetId = 'media-asset-id-123';
         final updatedCopy = sourceFixture.copyWith(
@@ -118,7 +120,7 @@ void main() {
       });
 
       test('updates multiple fields simultaneously', () {
-        const updatedName = 'Multi Update Source';
+        const updatedName = {SupportedLanguage.en: 'Multi Update Source'};
         const updatedType = SourceType.aggregator;
         const updatedStatus = ContentStatus.archived;
         final updatedCopy = sourceFixture.copyWith(

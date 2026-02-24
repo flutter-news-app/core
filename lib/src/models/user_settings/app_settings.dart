@@ -1,6 +1,4 @@
-import 'package:core/src/models/entities/language.dart';
-import 'package:core/src/models/user_settings/display_settings.dart';
-import 'package:core/src/models/user_settings/feed_settings.dart';
+import 'package:core/core.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
@@ -38,7 +36,7 @@ class AppSettings extends Equatable {
   final String id;
 
   /// The selected application language.
-  final Language language;
+  final SupportedLanguage language;
 
   /// User-configurable settings related to the application's visual appearance.
   final DisplaySettings displaySettings;
@@ -56,7 +54,7 @@ class AppSettings extends Equatable {
   /// replaced with the new values.
   AppSettings copyWith({
     String? id,
-    Language? language,
+    SupportedLanguage? language,
     DisplaySettings? displaySettings,
     FeedSettings? feedSettings,
   }) {

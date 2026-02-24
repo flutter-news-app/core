@@ -45,4 +45,8 @@ Map<String, dynamic> _$AdConfigToJson(AdConfig instance) => <String, dynamic>{
   'navigationAdConfiguration': instance.navigationAdConfiguration.toJson(),
 };
 
-const _$AdPlatformTypeEnumMap = {AdPlatformType.admob: 'admob'};
+const _$AdPlatformTypeEnumMap = {
+  AdPlatformType.admob: 'admob',
+  AdPlatformType.appLovin: 'appLovin',
+  AdPlatformType.ironSource: 'ironSource',
+};

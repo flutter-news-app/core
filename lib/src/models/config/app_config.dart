@@ -1,4 +1,5 @@
 import 'package:core/src/models/config/general_app_config.dart';
+import 'package:core/src/models/config/localization_config.dart';
 import 'package:core/src/models/config/maintenance_config.dart';
 import 'package:core/src/models/config/update_config.dart';
 import 'package:equatable/equatable.dart';
@@ -18,6 +19,7 @@ class AppConfig extends Equatable {
     required this.maintenance,
     required this.update,
     required this.general,
+    required this.localization,
   });
 
   /// Creates an [AppConfig] from JSON data.
@@ -33,11 +35,14 @@ class AppConfig extends Equatable {
   /// General application settings.
   final GeneralAppConfig general;
 
+  /// Configuration for language support and fallback policies.
+  final LocalizationConfig localization;
+
   /// Converts this [AppConfig] instance to JSON data.
   Map<String, dynamic> toJson() => _$AppConfigToJson(this);
 
   @override
-  List<Object> get props => [maintenance, update, general];
+  List<Object> get props => [maintenance, update, general, localization];
 
   /// Creates a copy of this [AppConfig] but with the given fields
   /// replaced with the new values.
@@ -45,11 +50,13 @@ class AppConfig extends Equatable {
     MaintenanceConfig? maintenance,
     UpdateConfig? update,
     GeneralAppConfig? general,
+    LocalizationConfig? localization,
   }) {
     return AppConfig(
       maintenance: maintenance ?? this.maintenance,
       update: update ?? this.update,
       general: general ?? this.general,
+      localization: localization ?? this.localization,
     );
   }
 }

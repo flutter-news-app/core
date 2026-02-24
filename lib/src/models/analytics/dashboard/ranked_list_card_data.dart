@@ -1,5 +1,6 @@
 import 'package:core/src/enums/ranked_list_card_id.dart';
 import 'package:core/src/enums/ranked_list_time_frame.dart';
+import 'package:core/src/enums/supported_language.dart';
 import 'package:core/src/models/analytics/dashboard/ranked_list_item.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -37,7 +38,7 @@ class RankedListCardData extends Equatable {
   final RankedListCardId cardId;
 
   /// The display label for the card (e.g., 'Most Viewed Headlines').
-  final String label;
+  final Map<SupportedLanguage, String> label;
 
   /// A map containing the pre-calculated ranked list for each supported
   /// time frame.
@@ -54,7 +55,7 @@ class RankedListCardData extends Equatable {
   RankedListCardData copyWith({
     String? id,
     RankedListCardId? cardId,
-    String? label,
+    Map<SupportedLanguage, String>? label,
     Map<RankedListTimeFrame, List<RankedListItem>>? timeFrames,
   }) {
     return RankedListCardData(

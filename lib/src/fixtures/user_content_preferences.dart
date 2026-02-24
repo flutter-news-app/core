@@ -2,25 +2,13 @@ import 'package:core/core.dart';
 
 /// Generates a list of predefined user content preferences for fixture data.
 ///
-/// This function can be configured to generate preferences in either English or
-/// Arabic, which affects the nested fixture data like topics and sources.
-List<UserContentPreferences> getUserContentPreferencesFixturesData({
-  String languageCode = 'en',
-}) {
-  // Ensure only approved languages are used, default to 'en'.
-  final resolvedLanguageCode = ['en', 'ar'].contains(languageCode)
-      ? languageCode
-      : 'en';
-
+/// This function generates preferences using multilingual fixture data.
+List<UserContentPreferences> getUserContentPreferencesFixturesData() {
   // Get language-specific fixtures
-  final sources = getSourcesFixturesData(languageCode: resolvedLanguageCode);
-  final topics = getTopicsFixturesData(languageCode: resolvedLanguageCode);
-  final headlines = getHeadlinesFixturesData(
-    languageCode: resolvedLanguageCode,
-  );
-  final savedHeadlineFilters = getSavedHeadlineFiltersFixturesData(
-    languageCode: resolvedLanguageCode,
-  );
+  final sources = getSourcesFixturesData();
+  final topics = getTopicsFixturesData();
+  final headlines = getHeadlinesFixturesData();
+  final savedHeadlineFilters = getSavedHeadlineFiltersFixturesData();
 
   return [
     UserContentPreferences(

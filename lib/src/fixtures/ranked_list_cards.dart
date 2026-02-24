@@ -14,27 +14,24 @@ import 'package:uuid/uuid.dart';
 ///    real entities and assign them plausible metric values.
 /// This ensures that the "Most Viewed Headlines" card displays real headline
 /// titles that exist elsewhere in the demo data.
-List<RankedListCardData> getRankedListCardsFixturesData({
-  String languageCode = 'en',
-}) {
-  final resolvedLanguageCode = ['en', 'ar'].contains(languageCode)
-      ? languageCode
-      : 'en';
+List<RankedListCardData> getRankedListCardsFixturesData() {
   const uuid = Uuid();
-  final labels = _rankedListLabels[resolvedLanguageCode]!;
 
-  final allHeadlines = getHeadlinesFixturesData(
-    languageCode: resolvedLanguageCode,
-  );
-  final allSources = getSourcesFixturesData(languageCode: resolvedLanguageCode);
-  final allTopics = getTopicsFixturesData(languageCode: resolvedLanguageCode);
+  final allHeadlines = getHeadlinesFixturesData();
+  final allSources = getSourcesFixturesData();
+  final allTopics = getTopicsFixturesData();
 
   return [
     // --- Overview Page ---
     RankedListCardData(
       id: uuid.v4(),
       cardId: RankedListCardId.overviewHeadlinesMostViewed,
-      label: labels[RankedListCardId.overviewHeadlinesMostViewed]!,
+      label: {
+        for (final lang in _rankedListLabels.keys)
+          lang:
+              _rankedListLabels[lang]![RankedListCardId
+                  .overviewHeadlinesMostViewed]!,
+      },
       timeFrames: {
         RankedListTimeFrame.day: _getRankedHeadlines(allHeadlines, 5, 1000),
         RankedListTimeFrame.week: _getRankedHeadlines(allHeadlines, 5, 7000),
@@ -45,7 +42,12 @@ List<RankedListCardData> getRankedListCardsFixturesData({
     RankedListCardData(
       id: uuid.v4(),
       cardId: RankedListCardId.overviewHeadlinesMostLiked,
-      label: labels[RankedListCardId.overviewHeadlinesMostLiked]!,
+      label: {
+        for (final lang in _rankedListLabels.keys)
+          lang:
+              _rankedListLabels[lang]![RankedListCardId
+                  .overviewHeadlinesMostLiked]!,
+      },
       timeFrames: {
         RankedListTimeFrame.day: _getRankedHeadlines(allHeadlines, 5, 200),
         RankedListTimeFrame.week: _getRankedHeadlines(allHeadlines, 5, 1400),
@@ -56,7 +58,12 @@ List<RankedListCardData> getRankedListCardsFixturesData({
     RankedListCardData(
       id: uuid.v4(),
       cardId: RankedListCardId.overviewSourcesMostFollowed,
-      label: labels[RankedListCardId.overviewSourcesMostFollowed]!,
+      label: {
+        for (final lang in _rankedListLabels.keys)
+          lang:
+              _rankedListLabels[lang]![RankedListCardId
+                  .overviewSourcesMostFollowed]!,
+      },
       timeFrames: {
         RankedListTimeFrame.day: _getRankedSources(allSources, 5, 50),
         RankedListTimeFrame.week: _getRankedSources(allSources, 5, 350),
@@ -67,7 +74,12 @@ List<RankedListCardData> getRankedListCardsFixturesData({
     RankedListCardData(
       id: uuid.v4(),
       cardId: RankedListCardId.overviewTopicsMostFollowed,
-      label: labels[RankedListCardId.overviewTopicsMostFollowed]!,
+      label: {
+        for (final lang in _rankedListLabels.keys)
+          lang:
+              _rankedListLabels[lang]![RankedListCardId
+                  .overviewTopicsMostFollowed]!,
+      },
       timeFrames: {
         RankedListTimeFrame.day: _getRankedTopics(allTopics, 5, 80),
         RankedListTimeFrame.week: _getRankedTopics(allTopics, 5, 560),
@@ -155,17 +167,70 @@ List<RankedListItem> _getRankedTopics(List<Topic> items, int count, int max) {
 }
 
 /// A map containing the display labels for each ranked list card in all supported languages.
-final Map<String, Map<RankedListCardId, String>> _rankedListLabels = {
-  'en': {
+final Map<SupportedLanguage, Map<RankedListCardId, String>>
+_rankedListLabels = {
+  SupportedLanguage.en: {
     RankedListCardId.overviewHeadlinesMostViewed: 'Most Viewed Headlines',
     RankedListCardId.overviewHeadlinesMostLiked: 'Most Liked Headlines',
     RankedListCardId.overviewSourcesMostFollowed: 'Most Followed Sources',
     RankedListCardId.overviewTopicsMostFollowed: 'Most Followed Topics',
   },
-  'ar': {
+  SupportedLanguage.ar: {
     RankedListCardId.overviewHeadlinesMostViewed: 'العناوين الأكثر مشاهدة',
     RankedListCardId.overviewHeadlinesMostLiked: 'العناوين الأكثر إعجابًا',
     RankedListCardId.overviewSourcesMostFollowed: 'المصادر الأكثر متابعة',
     RankedListCardId.overviewTopicsMostFollowed: 'المواضيع الأكثر متابعة',
+  },
+  SupportedLanguage.es: {
+    RankedListCardId.overviewHeadlinesMostViewed: 'Titulares más vistos',
+    RankedListCardId.overviewHeadlinesMostLiked: 'Titulares con más me gusta',
+    RankedListCardId.overviewSourcesMostFollowed: 'Fuentes más seguidas',
+    RankedListCardId.overviewTopicsMostFollowed: 'Temas más seguidos',
+  },
+  SupportedLanguage.fr: {
+    RankedListCardId.overviewHeadlinesMostViewed: 'Titres les plus consultés',
+    RankedListCardId.overviewHeadlinesMostLiked: 'Titres les plus aimés',
+    RankedListCardId.overviewSourcesMostFollowed: 'Sources les plus suivies',
+    RankedListCardId.overviewTopicsMostFollowed: 'Sujets les plus suivis',
+  },
+  SupportedLanguage.pt: {
+    RankedListCardId.overviewHeadlinesMostViewed: 'Manchetes mais visualizadas',
+    RankedListCardId.overviewHeadlinesMostLiked: 'Manchetes mais curtidas',
+    RankedListCardId.overviewSourcesMostFollowed: 'Fontes mais seguidas',
+    RankedListCardId.overviewTopicsMostFollowed: 'Tópicos mais seguidos',
+  },
+  SupportedLanguage.de: {
+    RankedListCardId.overviewHeadlinesMostViewed: 'Meistgesehene Schlagzeilen',
+    RankedListCardId.overviewHeadlinesMostLiked: 'Beliebteste Schlagzeilen',
+    RankedListCardId.overviewSourcesMostFollowed: 'Meistgefolgte Quellen',
+    RankedListCardId.overviewTopicsMostFollowed: 'Meistgefolgte Themen',
+  },
+  SupportedLanguage.it: {
+    RankedListCardId.overviewHeadlinesMostViewed: 'Titoli più visti',
+    RankedListCardId.overviewHeadlinesMostLiked: 'Titoli più piaciuti',
+    RankedListCardId.overviewSourcesMostFollowed: 'Fonti più seguite',
+    RankedListCardId.overviewTopicsMostFollowed: 'Argomenti più seguiti',
+  },
+  SupportedLanguage.zh: {
+    RankedListCardId.overviewHeadlinesMostViewed: '浏览最多的头条新闻',
+    RankedListCardId.overviewHeadlinesMostLiked: '最受欢迎的头条新闻',
+    RankedListCardId.overviewSourcesMostFollowed: '关注最多的来源',
+    RankedListCardId.overviewTopicsMostFollowed: '关注最多的主题',
+  },
+  SupportedLanguage.hi: {
+    RankedListCardId.overviewHeadlinesMostViewed:
+        'सबसे ज्यादा देखी गई सुर्खियाँ',
+    RankedListCardId.overviewHeadlinesMostLiked:
+        'सबसे ज्यादा पसंद की गई सुर्खियाँ',
+    RankedListCardId.overviewSourcesMostFollowed:
+        'सबसे ज्यादा फॉलो किए जाने वाले स्रोत',
+    RankedListCardId.overviewTopicsMostFollowed:
+        'सबसे ज्यादा फॉलो किए जाने वाले विषय',
+  },
+  SupportedLanguage.ja: {
+    RankedListCardId.overviewHeadlinesMostViewed: '最も閲覧された見出し',
+    RankedListCardId.overviewHeadlinesMostLiked: '最もいいねされた見出し',
+    RankedListCardId.overviewSourcesMostFollowed: '最もフォローされているソース',
+    RankedListCardId.overviewTopicsMostFollowed: '最もフォローされているトピック',
   },
 };

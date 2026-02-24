@@ -31,10 +31,10 @@ class Topic extends FeedItem {
 
   /// The display name of the topic.
   @JsonKey(required: true)
-  final String name;
+  final Map<SupportedLanguage, String> name;
 
   /// The description for the topic.
-  final String description;
+  final Map<SupportedLanguage, String> description;
 
   /// The URL for an icon representing the topic.
   /// This is nullable as it may be populated asynchronously by the backend
@@ -85,8 +85,8 @@ class Topic extends FeedItem {
   /// the new values.
   Topic copyWith({
     String? id,
-    String? name,
-    String? description,
+    Map<SupportedLanguage, String>? name,
+    Map<SupportedLanguage, String>? description,
     ValueWrapper<String?>? iconUrl,
     DateTime? createdAt,
     DateTime? updatedAt,

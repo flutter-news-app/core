@@ -22,6 +22,7 @@ void main() {
           appConfigFixture.maintenance,
           appConfigFixture.update,
           appConfigFixture.general,
+          appConfigFixture.localization,
         ]),
       );
     });

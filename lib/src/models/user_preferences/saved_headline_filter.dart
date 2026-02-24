@@ -38,7 +38,7 @@ class SavedHeadlineFilter extends Equatable {
   final String userId;
 
   /// The user-provided name for this filter (e.g., "US Tech News").
-  final String name;
+  final Map<SupportedLanguage, String> name;
 
   /// The filtering criteria for this filter, containing lists of full
   /// Topic, Source, and Country objects.
@@ -73,7 +73,7 @@ class SavedHeadlineFilter extends Equatable {
   SavedHeadlineFilter copyWith({
     String? id,
     String? userId,
-    String? name,
+    Map<SupportedLanguage, String>? name,
     HeadlineFilterCriteria? criteria,
     bool? isPinned,
     Set<PushNotificationSubscriptionDeliveryType>? deliveryTypes,

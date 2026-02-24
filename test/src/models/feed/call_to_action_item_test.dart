@@ -6,9 +6,11 @@ void main() {
     const mockCallToAction = CallToActionItem(
       id: 'cta-1',
       decoratorType: FeedDecoratorType.linkAccount,
-      title: 'Link Account',
-      description: 'Link your account to save your progress.',
-      callToActionText: 'Link Account',
+      title: {SupportedLanguage.en: 'Link Account'},
+      description: {
+        SupportedLanguage.en: 'Link your account to save your progress.',
+      },
+      callToActionText: {SupportedLanguage.en: 'Link Account'},
       callToActionUrl: 'https://example.com/link-account',
     );
 
@@ -16,9 +18,11 @@ void main() {
       const item1 = CallToActionItem(
         id: 'cta-1',
         decoratorType: FeedDecoratorType.linkAccount,
-        title: 'Link Account',
-        description: 'Link your account to save your progress.',
-        callToActionText: 'Link Account',
+        title: {SupportedLanguage.en: 'Link Account'},
+        description: {
+          SupportedLanguage.en: 'Link your account to save your progress.',
+        },
+        callToActionText: {SupportedLanguage.en: 'Link Account'},
         callToActionUrl: 'https://example.com/link-account',
       );
       expect(item1, equals(mockCallToAction));

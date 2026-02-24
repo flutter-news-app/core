@@ -12,7 +12,7 @@ AppSettings _$AppSettingsFromJson(Map<String, dynamic> json) =>
         id: $checkedConvert('id', (v) => v as String),
         language: $checkedConvert(
           'language',
-          (v) => Language.fromJson(v as Map<String, dynamic>),
+          (v) => $enumDecode(_$SupportedLanguageEnumMap, v),
         ),
         displaySettings: $checkedConvert(
           'displaySettings',
@@ -29,7 +29,20 @@ AppSettings _$AppSettingsFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$AppSettingsToJson(AppSettings instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'language': instance.language.toJson(),
+      'language': _$SupportedLanguageEnumMap[instance.language]!,
       'displaySettings': instance.displaySettings.toJson(),
       'feedSettings': instance.feedSettings.toJson(),
     };
+
+const _$SupportedLanguageEnumMap = {
+  SupportedLanguage.en: 'en',
+  SupportedLanguage.es: 'es',
+  SupportedLanguage.fr: 'fr',
+  SupportedLanguage.ar: 'ar',
+  SupportedLanguage.pt: 'pt',
+  SupportedLanguage.de: 'de',
+  SupportedLanguage.it: 'it',
+  SupportedLanguage.zh: 'zh',
+  SupportedLanguage.hi: 'hi',
+  SupportedLanguage.ja: 'ja',
+};

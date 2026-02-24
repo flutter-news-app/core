@@ -11,7 +11,7 @@ Comment _$CommentFromJson(Map<String, dynamic> json) =>
       final val = Comment(
         language: $checkedConvert(
           'language',
-          (v) => Language.fromJson(v as Map<String, dynamic>),
+          (v) => $enumDecode(_$SupportedLanguageEnumMap, v),
         ),
         content: $checkedConvert('content', (v) => v as String),
         status: $checkedConvert(
@@ -25,9 +25,22 @@ Comment _$CommentFromJson(Map<String, dynamic> json) =>
     });
 
 Map<String, dynamic> _$CommentToJson(Comment instance) => <String, dynamic>{
-  'language': instance.language.toJson(),
+  'language': _$SupportedLanguageEnumMap[instance.language]!,
   'content': instance.content,
   'status': _$ModerationStatusEnumMap[instance.status]!,
+};
+
+const _$SupportedLanguageEnumMap = {
+  SupportedLanguage.en: 'en',
+  SupportedLanguage.es: 'es',
+  SupportedLanguage.fr: 'fr',
+  SupportedLanguage.ar: 'ar',
+  SupportedLanguage.pt: 'pt',
+  SupportedLanguage.de: 'de',
+  SupportedLanguage.it: 'it',
+  SupportedLanguage.zh: 'zh',
+  SupportedLanguage.hi: 'hi',
+  SupportedLanguage.ja: 'ja',
 };
 
 const _$ModerationStatusEnumMap = {

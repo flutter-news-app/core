@@ -10,14 +10,14 @@ void main() {
       id: 'cc-topic-1',
       decoratorType: FeedDecoratorType.suggestedTopics,
       items: mockTopics,
-      title: 'Suggested Topics',
+      title: const {SupportedLanguage.en: 'Suggested Topics'},
     );
 
     final mockSourceCollection = ContentCollectionItem<Source>(
       id: 'cc-source-1',
       decoratorType: FeedDecoratorType.suggestedSources,
       items: mockSources,
-      title: 'Suggested Sources',
+      title: const {SupportedLanguage.en: 'Suggested Sources'},
     );
 
     group('constructor', () {
@@ -27,7 +27,7 @@ void main() {
             id: 'cc-topic-1',
             decoratorType: FeedDecoratorType.suggestedTopics,
             items: const [],
-            title: 'Suggested Topics',
+            title: const {SupportedLanguage.en: 'Suggested Topics'},
           ),
           throwsA(isA<AssertionError>()),
         );
@@ -40,7 +40,7 @@ void main() {
           id: 'cc-topic-1',
           decoratorType: FeedDecoratorType.suggestedTopics,
           items: mockTopics,
-          title: 'Suggested Topics',
+          title: const {SupportedLanguage.en: 'Suggested Topics'},
         );
         expect(item1, equals(mockTopicCollection));
       });
@@ -50,7 +50,7 @@ void main() {
           id: 'cc-source-1',
           decoratorType: FeedDecoratorType.suggestedSources,
           items: mockSources,
-          title: 'Suggested Sources',
+          title: const {SupportedLanguage.en: 'Suggested Sources'},
         );
         expect(item1, equals(mockSourceCollection));
       });

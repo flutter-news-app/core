@@ -23,7 +23,7 @@ void main() {
 
     group('copyWith', () {
       test('should create a copy with updated values', () {
-        const updatedTitle = 'Updated Title';
+        const updatedTitle = {SupportedLanguage.en: 'Updated Title'};
         const updatedUrl = 'http://example.com/updated';
         const updatedMediaAssetId = 'media-asset-id-456';
         final copiedHeadline = headlineFixture.copyWith(
@@ -66,7 +66,9 @@ void main() {
 
       test('should not equate instances with different properties', () {
         final headline1 = headlineFixture.copyWith();
-        final headline2 = headlineFixture.copyWith(title: 'Different Title');
+        final headline2 = headlineFixture.copyWith(
+          title: {SupportedLanguage.en: 'Different Title'},
+        );
         final headline3 = headlineFixture.copyWith(id: 'different-id');
         expect(headline1, isNot(equals(headline2)));
         expect(headline1, isNot(equals(headline3)));

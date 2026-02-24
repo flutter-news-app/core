@@ -23,12 +23,12 @@ void main() {
     group('copyWith', () {
       test('should return a new instance with updated values', () {
         final updatedCard = chartCardDataFixture.copyWith(
-          label: 'A New Label',
+          label: {SupportedLanguage.en: 'A New Label'},
           cardId: ChartCardId.usersActiveUsersOverTime,
           type: ChartType.bar,
         );
 
-        expect(updatedCard.label, 'A New Label');
+        expect(updatedCard.label, {SupportedLanguage.en: 'A New Label'});
         expect(updatedCard.cardId, ChartCardId.usersActiveUsersOverTime);
         expect(updatedCard.type, ChartType.bar);
         expect(updatedCard.id, chartCardDataFixture.id);
@@ -60,7 +60,7 @@ void main() {
         final instance3 = ChartCardData(
           id: chartCardDataFixture.id,
           cardId: chartCardDataFixture.cardId,
-          label: 'Different Label',
+          label: const {SupportedLanguage.en: 'Different Label'},
           type: chartCardDataFixture.type,
           timeFrames: chartCardDataFixture.timeFrames,
         );

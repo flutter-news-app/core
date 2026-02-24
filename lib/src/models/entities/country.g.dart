@@ -6,41 +6,44 @@ part of 'country.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Country _$CountryFromJson(Map<String, dynamic> json) =>
-    $checkedCreate('Country', json, ($checkedConvert) {
-      final val = Country(
-        isoCode: $checkedConvert('isoCode', (v) => v as String),
-        name: $checkedConvert('name', (v) => v as String),
-        flagUrl: $checkedConvert('flagUrl', (v) => v as String),
-        id: $checkedConvert('id', (v) => v as String),
-        createdAt: $checkedConvert(
-          'createdAt',
-          (v) => const DateTimeConverter().fromJson(v as String),
+Country _$CountryFromJson(Map<String, dynamic> json) => $checkedCreate(
+  'Country',
+  json,
+  ($checkedConvert) {
+    final val = Country(
+      isoCode: $checkedConvert('isoCode', (v) => v as String),
+      name: $checkedConvert(
+        'name',
+        (v) => (v as Map<String, dynamic>).map(
+          (k, e) =>
+              MapEntry($enumDecode(_$SupportedLanguageEnumMap, k), e as String),
         ),
-        updatedAt: $checkedConvert(
-          'updatedAt',
-          (v) => const DateTimeConverter().fromJson(v as String),
-        ),
-        status: $checkedConvert(
-          'status',
-          (v) => $enumDecode(_$ContentStatusEnumMap, v),
-        ),
-      );
-      return val;
-    });
+      ),
+      flagUrl: $checkedConvert('flagUrl', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String),
+    );
+    return val;
+  },
+);
 
 Map<String, dynamic> _$CountryToJson(Country instance) => <String, dynamic>{
   'id': instance.id,
   'isoCode': instance.isoCode,
-  'name': instance.name,
+  'name': instance.name.map(
+    (k, e) => MapEntry(_$SupportedLanguageEnumMap[k]!, e),
+  ),
   'flagUrl': instance.flagUrl,
-  'createdAt': const DateTimeConverter().toJson(instance.createdAt),
-  'updatedAt': const DateTimeConverter().toJson(instance.updatedAt),
-  'status': _$ContentStatusEnumMap[instance.status]!,
 };
 
-const _$ContentStatusEnumMap = {
-  ContentStatus.active: 'active',
-  ContentStatus.draft: 'draft',
-  ContentStatus.archived: 'archived',
+const _$SupportedLanguageEnumMap = {
+  SupportedLanguage.en: 'en',
+  SupportedLanguage.es: 'es',
+  SupportedLanguage.fr: 'fr',
+  SupportedLanguage.ar: 'ar',
+  SupportedLanguage.pt: 'pt',
+  SupportedLanguage.de: 'de',
+  SupportedLanguage.it: 'it',
+  SupportedLanguage.zh: 'zh',
+  SupportedLanguage.hi: 'hi',
+  SupportedLanguage.ja: 'ja',
 };

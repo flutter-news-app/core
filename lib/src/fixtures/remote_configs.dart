@@ -18,6 +18,10 @@ final remoteConfigsFixturesData = <RemoteConfig>[
         termsOfServiceUrl: 'https://example.com/terms',
         privacyPolicyUrl: 'https://example.com/privacy',
       ),
+      localization: LocalizationConfig(
+        enabledLanguages: [SupportedLanguage.en, SupportedLanguage.es],
+        defaultLanguage: SupportedLanguage.en,
+      ),
     ),
     user: const UserConfig(
       limits: UserLimitsConfig(

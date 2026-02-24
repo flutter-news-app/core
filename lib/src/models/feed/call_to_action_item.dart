@@ -1,4 +1,5 @@
 import 'package:core/src/enums/feed_decorator_type.dart';
+import 'package:core/src/enums/supported_language.dart';
 import 'package:core/src/models/feed/feed_item.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
@@ -35,13 +36,13 @@ class CallToActionItem extends FeedItem {
   final FeedDecoratorType decoratorType;
 
   /// The main title or heading for the call-to-action.
-  final String title;
+  final Map<SupportedLanguage, String> title;
 
   /// A description providing more details.
-  final String description;
+  final Map<SupportedLanguage, String> description;
 
   /// The text for the call-to-action button or link.
-  final String callToActionText;
+  final Map<SupportedLanguage, String> callToActionText;
 
   /// The URL to navigate to when the call-to-action is triggered.
   final String callToActionUrl;

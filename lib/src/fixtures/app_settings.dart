@@ -2,49 +2,33 @@ import 'package:core/core.dart';
 
 /// App Settings Demo Data
 final List<AppSettings> appSettingsFixturesData = [
-  AppSettings(
+  const AppSettings(
     id: kAdminUserId,
-    displaySettings: const DisplaySettings(
+    displaySettings: DisplaySettings(
       baseTheme: AppBaseTheme.system,
       accentTheme: AppAccentTheme.defaultBlue,
       fontFamily: 'SystemDefault',
       textScaleFactor: AppTextScaleFactor.medium,
       fontWeight: AppFontWeight.regular,
     ),
-    language: Language(
-      id: 'lang-en',
-      code: 'en',
-      name: 'English',
-      nativeName: 'English',
-      createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
-      status: ContentStatus.active,
-    ),
-    feedSettings: const FeedSettings(
+    language: SupportedLanguage.en,
+    feedSettings: FeedSettings(
       feedItemDensity: FeedItemDensity.standard,
       feedItemImageStyle: FeedItemImageStyle.smallThumbnail,
       feedItemClickBehavior: FeedItemClickBehavior.defaultBehavior,
     ),
   ),
-  AppSettings(
+  const AppSettings(
     id: kPublisherStandardId,
-    displaySettings: const DisplaySettings(
+    displaySettings: DisplaySettings(
       baseTheme: AppBaseTheme.dark,
       accentTheme: AppAccentTheme.newsRed,
       fontFamily: 'SystemDefault',
       textScaleFactor: AppTextScaleFactor.medium,
       fontWeight: AppFontWeight.regular,
     ),
-    language: Language(
-      id: 'lang-en',
-      code: 'en',
-      name: 'English',
-      nativeName: 'English',
-      createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
-      status: ContentStatus.active,
-    ),
-    feedSettings: const FeedSettings(
+    language: SupportedLanguage.en,
+    feedSettings: FeedSettings(
       feedItemDensity: FeedItemDensity.compact,
       feedItemImageStyle: FeedItemImageStyle.largeThumbnail,
       feedItemClickBehavior: FeedItemClickBehavior.defaultBehavior,
@@ -71,15 +55,7 @@ final List<AppSettings> appSettingsFixturesData = [
         textScaleFactor: AppTextScaleFactor.medium,
         fontWeight: AppFontWeight.regular,
       ),
-      language: Language(
-        id: 'lang-en',
-        code: 'en',
-        name: 'English',
-        nativeName: 'English',
-        createdAt: DateTime.now(),
-        updatedAt: DateTime.now(),
-        status: ContentStatus.active,
-      ),
+      language: SupportedLanguage.en,
       feedSettings: const FeedSettings(
         feedItemDensity: FeedItemDensity.standard,
         feedItemImageStyle: FeedItemImageStyle.smallThumbnail,

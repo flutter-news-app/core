@@ -82,11 +82,11 @@ void main() {
     group('copyWith', () {
       test('should return a new instance with updated values', () {
         final updatedCard = kpiCardDataFixture.copyWith(
-          label: 'A New Label',
+          label: {SupportedLanguage.en: 'A New Label'},
           cardId: KpiCardId.usersActiveUsers,
         );
 
-        expect(updatedCard.label, 'A New Label');
+        expect(updatedCard.label, {SupportedLanguage.en: 'A New Label'});
         expect(updatedCard.cardId, KpiCardId.usersActiveUsers);
         expect(updatedCard.id, kpiCardDataFixture.id);
         expect(updatedCard.timeFrames, equals(kpiCardDataFixture.timeFrames));
@@ -116,7 +116,7 @@ void main() {
         final instance3 = KpiCardData(
           id: kpiCardDataFixture.id,
           cardId: kpiCardDataFixture.cardId,
-          label: 'Different Label',
+          label: const {SupportedLanguage.en: 'Different Label'},
           timeFrames: kpiCardDataFixture.timeFrames,
         );
         expect(instance1, isNot(equals(instance2)));

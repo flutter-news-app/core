@@ -21,9 +21,6 @@ void main() {
           countryFixture.isoCode,
           countryFixture.name,
           countryFixture.flagUrl,
-          countryFixture.createdAt,
-          countryFixture.updatedAt,
-          countryFixture.status,
           countryFixture.type,
         ]),
       );
@@ -41,15 +38,7 @@ void main() {
       });
 
       test('throws CheckedFromJsonException for missing required fields', () {
-        final requiredKeys = [
-          'id',
-          'isoCode',
-          'name',
-          'flagUrl',
-          'createdAt',
-          'updatedAt',
-          'status',
-        ];
+        final requiredKeys = ['id', 'isoCode', 'name', 'flagUrl'];
         for (final key in requiredKeys) {
           final corruptedJson = Map<String, dynamic>.from(countryJson)
             ..remove(key);

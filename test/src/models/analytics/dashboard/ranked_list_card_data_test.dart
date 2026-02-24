@@ -23,11 +23,11 @@ void main() {
     group('copyWith', () {
       test('should return a new instance with updated values', () {
         final updatedCard = rankedListCardDataFixture.copyWith(
-          label: 'A New Label',
+          label: {SupportedLanguage.en: 'A New Label'},
           cardId: RankedListCardId.overviewHeadlinesMostLiked,
         );
 
-        expect(updatedCard.label, 'A New Label');
+        expect(updatedCard.label, {SupportedLanguage.en: 'A New Label'});
         expect(updatedCard.cardId, RankedListCardId.overviewHeadlinesMostLiked);
         expect(updatedCard.id, rankedListCardDataFixture.id);
         expect(
@@ -62,7 +62,7 @@ void main() {
         final instance3 = RankedListCardData(
           id: rankedListCardDataFixture.id,
           cardId: rankedListCardDataFixture.cardId,
-          label: 'Different Label',
+          label: const {SupportedLanguage.en: 'Different Label'},
           timeFrames: rankedListCardDataFixture.timeFrames,
         );
         expect(instance1, isNot(equals(instance2)));

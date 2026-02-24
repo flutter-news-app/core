@@ -18,33 +18,44 @@ KpiTimeFrameData _$KpiTimeFrameDataFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$KpiTimeFrameDataToJson(KpiTimeFrameData instance) =>
     <String, dynamic>{'value': instance.value, 'trend': instance.trend};
 
-KpiCardData _$KpiCardDataFromJson(Map<String, dynamic> json) =>
-    $checkedCreate('KpiCardData', json, ($checkedConvert) {
-      final val = KpiCardData(
-        id: $checkedConvert('id', (v) => v as String),
-        cardId: $checkedConvert(
-          'cardId',
-          (v) => $enumDecode(_$KpiCardIdEnumMap, v),
+KpiCardData _$KpiCardDataFromJson(Map<String, dynamic> json) => $checkedCreate(
+  'KpiCardData',
+  json,
+  ($checkedConvert) {
+    final val = KpiCardData(
+      id: $checkedConvert('id', (v) => v as String),
+      cardId: $checkedConvert(
+        'cardId',
+        (v) => $enumDecode(_$KpiCardIdEnumMap, v),
+      ),
+      label: $checkedConvert(
+        'label',
+        (v) => (v as Map<String, dynamic>).map(
+          (k, e) =>
+              MapEntry($enumDecode(_$SupportedLanguageEnumMap, k), e as String),
         ),
-        label: $checkedConvert('label', (v) => v as String),
-        timeFrames: $checkedConvert(
-          'timeFrames',
-          (v) => (v as Map<String, dynamic>).map(
-            (k, e) => MapEntry(
-              $enumDecode(_$KpiTimeFrameEnumMap, k),
-              KpiTimeFrameData.fromJson(e as Map<String, dynamic>),
-            ),
+      ),
+      timeFrames: $checkedConvert(
+        'timeFrames',
+        (v) => (v as Map<String, dynamic>).map(
+          (k, e) => MapEntry(
+            $enumDecode(_$KpiTimeFrameEnumMap, k),
+            KpiTimeFrameData.fromJson(e as Map<String, dynamic>),
           ),
         ),
-      );
-      return val;
-    });
+      ),
+    );
+    return val;
+  },
+);
 
 Map<String, dynamic> _$KpiCardDataToJson(KpiCardData instance) =>
     <String, dynamic>{
       'id': instance.id,
       'cardId': _$KpiCardIdEnumMap[instance.cardId]!,
-      'label': instance.label,
+      'label': instance.label.map(
+        (k, e) => MapEntry(_$SupportedLanguageEnumMap[k]!, e),
+      ),
       'timeFrames': instance.timeFrames.map(
         (k, e) => MapEntry(_$KpiTimeFrameEnumMap[k]!, e.toJson()),
       ),
@@ -83,6 +94,19 @@ const _$KpiCardIdEnumMap = {
   KpiCardId.mediaTotalUploads: 'mediaTotalUploads',
   KpiCardId.mediaFailedUploads: 'mediaFailedUploads',
   KpiCardId.mediaAverageUploadTime: 'mediaAverageUploadTime',
+};
+
+const _$SupportedLanguageEnumMap = {
+  SupportedLanguage.en: 'en',
+  SupportedLanguage.es: 'es',
+  SupportedLanguage.fr: 'fr',
+  SupportedLanguage.ar: 'ar',
+  SupportedLanguage.pt: 'pt',
+  SupportedLanguage.de: 'de',
+  SupportedLanguage.it: 'it',
+  SupportedLanguage.zh: 'zh',
+  SupportedLanguage.hi: 'hi',
+  SupportedLanguage.ja: 'ja',
 };
 
 const _$KpiTimeFrameEnumMap = {

@@ -37,7 +37,7 @@ class Headline extends FeedItem {
   final String id;
 
   /// Title of the headline.
-  final String title;
+  final Map<SupportedLanguage, String> title;
 
   /// URL to the full article or content.
   final String url;
@@ -115,7 +115,7 @@ class Headline extends FeedItem {
   /// Use this to modify a [Headline] without changing the original instance.
   Headline copyWith({
     String? id,
-    String? title,
+    Map<SupportedLanguage, String>? title,
     String? url,
     ValueWrapper<String?>? imageUrl,
     DateTime? createdAt,

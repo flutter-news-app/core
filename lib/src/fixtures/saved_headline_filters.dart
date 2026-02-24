@@ -1,24 +1,36 @@
 import 'package:core/core.dart';
 
 /// Generates a list of predefined saved headline filters for fixture data.
-List<SavedHeadlineFilter> getSavedHeadlineFiltersFixturesData({
-  String languageCode = 'en',
-}) {
-  final resolvedLanguageCode = ['en', 'ar'].contains(languageCode)
-      ? languageCode
-      : 'en';
-  final topics = getTopicsFixturesData(languageCode: resolvedLanguageCode);
+List<SavedHeadlineFilter> getSavedHeadlineFiltersFixturesData() {
+  final topics = getTopicsFixturesData();
 
-  final namesByLang = {
-    'en': ['US Tech News', 'Global Business'],
-    'ar': ['أخبار التكنولوجيا الأمريكية', 'أعمال عالمية'],
+  final names = <SupportedLanguage, List<String>>{
+    SupportedLanguage.en: ['US Tech News', 'Global Business'],
+    SupportedLanguage.ar: ['أخبار التكنولوجيا الأمريكية', 'أعمال عالمية'],
+    SupportedLanguage.es: [
+      'Noticias tecnológicas de EE. UU.',
+      'Negocios globales',
+    ],
+    SupportedLanguage.fr: [
+      'Actualités technologiques américaines',
+      'Affaires mondiales',
+    ],
+    SupportedLanguage.pt: [
+      'Notícias de tecnologia dos EUA',
+      'Negócios globais',
+    ],
+    SupportedLanguage.de: ['US-Tech-Nachrichten', 'Globales Geschäft'],
+    SupportedLanguage.it: ['Notizie tecnologiche dagli USA', 'Affari globali'],
+    SupportedLanguage.zh: ['美国科技新闻', '全球商业'],
+    SupportedLanguage.hi: ['अमेरिकी तकनीकी समाचार', 'वैश्विक व्यापार'],
+    SupportedLanguage.ja: ['米国の技術ニュース', 'グローバルビジネス'],
   };
 
   return <SavedHeadlineFilter>[
     SavedHeadlineFilter(
       id: kSavedHeadlineFilterId1,
       userId: kAdminUserId,
-      name: namesByLang[resolvedLanguageCode]![0],
+      name: {for (final lang in names.keys) lang: names[lang]![0]},
       isPinned: true,
       deliveryTypes: const {
         PushNotificationSubscriptionDeliveryType.breakingOnly,
@@ -32,7 +44,7 @@ List<SavedHeadlineFilter> getSavedHeadlineFiltersFixturesData({
     SavedHeadlineFilter(
       id: kSavedHeadlineFilterId2,
       userId: kAdminUserId,
-      name: namesByLang[resolvedLanguageCode]![1],
+      name: {for (final lang in names.keys) lang: names[lang]![1]},
       isPinned: false,
       deliveryTypes: const {
         PushNotificationSubscriptionDeliveryType.breakingOnly,

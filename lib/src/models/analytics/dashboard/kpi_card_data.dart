@@ -1,5 +1,6 @@
 import 'package:core/src/enums/kpi_card_id.dart';
 import 'package:core/src/enums/kpi_time_frame.dart';
+import 'package:core/src/enums/supported_language.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
@@ -72,7 +73,7 @@ class KpiCardData extends Equatable {
   final KpiCardId cardId;
 
   /// The display label for the card (e.g., 'Total Views').
-  final String label;
+  final Map<SupportedLanguage, String> label;
 
   /// A map containing the pre-calculated data for each supported time frame.
   ///
@@ -88,7 +89,7 @@ class KpiCardData extends Equatable {
   KpiCardData copyWith({
     String? id,
     KpiCardId? cardId,
-    String? label,
+    Map<SupportedLanguage, String>? label,
     Map<KpiTimeFrame, KpiTimeFrameData>? timeFrames,
   }) {
     return KpiCardData(

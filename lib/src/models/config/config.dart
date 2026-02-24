@@ -14,6 +14,7 @@ export 'feed_decorator_config.dart';
 export 'feed_decorator_role_config.dart';
 export 'general_app_config.dart';
 export 'initial_personalization_config.dart';
+export 'localization_config.dart';
 export 'maintenance_config.dart';
 export 'navigation_ad_configuration.dart';
 export 'navigation_ad_frequency_config.dart';

@@ -24,11 +24,11 @@ void main() {
     group('copyWith', () {
       test('should return a new instance with updated values', () {
         final updatedItem = rankedListItemFixture.copyWith(
-          displayTitle: 'A New Title',
+          displayTitle: {SupportedLanguage.en: 'A New Title'},
           metricValue: 999,
         );
 
-        expect(updatedItem.displayTitle, 'A New Title');
+        expect(updatedItem.displayTitle, {SupportedLanguage.en: 'A New Title'});
         expect(updatedItem.metricValue, 999);
         expect(updatedItem.entityId, rankedListItemFixture.entityId);
       });
@@ -57,7 +57,7 @@ void main() {
         );
         final instance3 = RankedListItem(
           entityId: rankedListItemFixture.entityId,
-          displayTitle: 'Different Title',
+          displayTitle: const {SupportedLanguage.en: 'Different Title'},
           metricValue: rankedListItemFixture.metricValue,
         );
         expect(instance1, isNot(equals(instance2)));

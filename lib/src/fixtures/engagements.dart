@@ -13,7 +13,7 @@ List<Engagement> getEngagementsFixturesData({
 }) {
   final engagements = <Engagement>[];
   final users = usersFixturesData;
-  final headlines = getHeadlinesFixturesData(languageCode: languageCode);
+  final headlines = getHeadlinesFixturesData();
   final reactions = reactionsFixturesData;
   final comments = getHeadlineCommentsFixturesData(
     languageCode: languageCode,
