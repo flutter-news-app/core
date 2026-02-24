@@ -13,6 +13,7 @@ export 'chart_card_id.dart';
 export 'chart_time_frame.dart';
 export 'chart_type.dart';
 export 'comment_report_reason.dart';
+export 'content_language.dart';
 export 'content_status.dart';
 export 'content_type.dart';
 export 'device_platform.dart';
