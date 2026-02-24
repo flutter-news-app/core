@@ -1,3 +1,4 @@
+import 'package:core/src/enums/content_language.dart';
 import 'package:core/src/enums/feed_decorator_type.dart';
 import 'package:core/src/models/feed/feed_item.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -41,7 +42,7 @@ class ContentCollectionItem<T extends FeedItem> extends FeedItem {
   final FeedDecoratorType decoratorType;
 
   /// The title to display above the collection.
-  final String title;
+  final Map<ContentLanguage, String> title;
 
   /// The list of items to display in the collection.
   final List<T> items;
