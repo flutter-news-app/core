@@ -9,7 +9,7 @@ part of 'localization_config.dart';
 LocalizationConfig _$LocalizationConfigFromJson(Map<String, dynamic> json) =>
     $checkedCreate('LocalizationConfig', json, ($checkedConvert) {
       final val = LocalizationConfig(
-        supportedLanguages: $checkedConvert(
+        enabledLanguages: $checkedConvert(
           'supportedLanguages',
           (v) => (v as List<dynamic>)
               .map((e) => $enumDecode(_$ContentLanguageEnumMap, e))
@@ -25,7 +25,7 @@ LocalizationConfig _$LocalizationConfigFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$LocalizationConfigToJson(LocalizationConfig instance) =>
     <String, dynamic>{
-      'supportedLanguages': instance.supportedLanguages
+      'supportedLanguages': instance.enabledLanguages
           .map((e) => _$ContentLanguageEnumMap[e]!)
           .toList(),
       'defaultLanguage': _$ContentLanguageEnumMap[instance.defaultLanguage]!,

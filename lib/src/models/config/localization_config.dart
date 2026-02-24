@@ -16,7 +16,7 @@ part 'localization_config.g.dart';
 class LocalizationConfig extends Equatable {
   /// {@macro localization_config}
   const LocalizationConfig({
-    required this.supportedLanguages,
+    required this.enabledLanguages,
     required this.defaultLanguage,
   });
 
@@ -26,7 +26,7 @@ class LocalizationConfig extends Equatable {
 
   /// The strict subset of languages that this app instance supports.
   /// The mobile client must ONLY render these options in the language picker.
-  final List<SupportedLanguage> supportedLanguages;
+  final List<SupportedLanguage> enabledLanguages;
 
   /// The primary fallback language if a user's device language isn't supported.
   final SupportedLanguage defaultLanguage;
@@ -35,7 +35,7 @@ class LocalizationConfig extends Equatable {
   Map<String, dynamic> toJson() => _$LocalizationConfigToJson(this);
 
   @override
-  List<Object> get props => [supportedLanguages, defaultLanguage];
+  List<Object> get props => [enabledLanguages, defaultLanguage];
 
   /// Creates a copy of this [LocalizationConfig] but with the given fields
   /// replaced with the new values.
@@ -44,7 +44,7 @@ class LocalizationConfig extends Equatable {
     SupportedLanguage? defaultLanguage,
   }) {
     return LocalizationConfig(
-      supportedLanguages: supportedLanguages ?? this.supportedLanguages,
+      enabledLanguages: supportedLanguages ?? this.enabledLanguages,
       defaultLanguage: defaultLanguage ?? this.defaultLanguage,
     );
   }

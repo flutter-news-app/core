@@ -19,7 +19,7 @@ final remoteConfigsFixturesData = <RemoteConfig>[
         privacyPolicyUrl: 'https://example.com/privacy',
       ),
       localization: LocalizationConfig(
-        supportedLanguages: [SupportedLanguage.en, SupportedLanguage.es],
+        enabledLanguages: [SupportedLanguage.en, SupportedLanguage.es],
         defaultLanguage: SupportedLanguage.en,
       ),
     ),
