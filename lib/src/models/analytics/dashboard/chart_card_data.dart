@@ -1,6 +1,7 @@
 import 'package:core/src/enums/chart_card_id.dart';
 import 'package:core/src/enums/chart_time_frame.dart';
 import 'package:core/src/enums/chart_type.dart';
+import 'package:core/src/enums/content_language.dart';
 import 'package:core/src/models/analytics/dashboard/data_point.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -38,7 +39,7 @@ class ChartCardData extends Equatable {
   final ChartCardId cardId;
 
   /// The display label for the card (e.g., 'Views Over Time').
-  final String label;
+  final Map<ContentLanguage, String> label;
 
   /// The type of chart to render (e.g., `line`, `bar`).
   final ChartType type;
@@ -58,7 +59,7 @@ class ChartCardData extends Equatable {
   ChartCardData copyWith({
     String? id,
     ChartCardId? cardId,
-    String? label,
+    Map<ContentLanguage, String>? label,
     ChartType? type,
     Map<ChartTimeFrame, List<DataPoint>>? timeFrames,
   }) {
