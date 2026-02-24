@@ -29,8 +29,11 @@ List<Headline> getHeadlinesFixturesData({
   final headlines = <Headline>[];
   for (var i = 0; i < _headlineIds.length; i++) {
     final id = _headlineIds[i];
-    final title =
-        _titlesByLang[resolvedLanguageCode]![i % _titlesByLang['en']!.length];
+    final titleIndex = i % _titlesByLang['en']!.length;
+    final title = {
+      for (final lang in _titlesByLang.keys)
+        ContentLanguage.values.byName(lang): _titlesByLang[lang]![titleIndex],
+    };
     final source = sources[i % sources.length];
     final topic = topics[i % topics.length];
     final country = countriesFixturesData[i % countriesFixturesData.length];

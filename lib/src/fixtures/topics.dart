@@ -17,8 +17,14 @@ List<Topic> getTopicsFixturesData({String languageCode = 'en'}) {
     topics.add(
       Topic(
         id: _topicIds[i],
-        name: _namesByLang[resolvedLanguageCode]![i],
-        description: _descriptionsByLang[resolvedLanguageCode]![i],
+        name: {
+          for (final lang in _namesByLang.keys)
+            ContentLanguage.values.byName(lang): _namesByLang[lang]![i],
+        },
+        description: {
+          for (final lang in _descriptionsByLang.keys)
+            ContentLanguage.values.byName(lang): _descriptionsByLang[lang]![i],
+        },
         iconUrl: 'https://example.com/icons/${_iconNames[i]}.png',
         createdAt: DateTime.parse(
           '2023-01-01T10:00:00.000Z',

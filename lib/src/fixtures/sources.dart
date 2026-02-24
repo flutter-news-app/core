@@ -17,8 +17,14 @@ List<Source> getSourcesFixturesData({String languageCode = 'en'}) {
   final sources = <Source>[];
   for (var i = 0; i < _sourceIds.length; i++) {
     final id = _sourceIds[i];
-    final name = _namesByLang[resolvedLanguageCode]![i];
-    final description = _descriptionsByLang[resolvedLanguageCode]![i];
+    final name = {
+      for (final lang in _namesByLang.keys)
+        ContentLanguage.values.byName(lang): _namesByLang[lang]![i],
+    };
+    final description = {
+      for (final lang in _descriptionsByLang.keys)
+        ContentLanguage.values.byName(lang): _descriptionsByLang[lang]![i],
+    };
     final url = _urls[i];
     final logoUrl = 'https://api.companyenrich.com/logo/${url.split('/')[2]}';
     final sourceType = _sourceTypes[i];
