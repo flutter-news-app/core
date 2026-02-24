@@ -19,18 +19,6 @@ Country _$CountryFromJson(Map<String, dynamic> json) =>
         ),
         flagUrl: $checkedConvert('flagUrl', (v) => v as String),
         id: $checkedConvert('id', (v) => v as String),
-        createdAt: $checkedConvert(
-          'createdAt',
-          (v) => const DateTimeConverter().fromJson(v as String),
-        ),
-        updatedAt: $checkedConvert(
-          'updatedAt',
-          (v) => const DateTimeConverter().fromJson(v as String),
-        ),
-        status: $checkedConvert(
-          'status',
-          (v) => $enumDecode(_$ContentStatusEnumMap, v),
-        ),
       );
       return val;
     });
@@ -42,9 +30,6 @@ Map<String, dynamic> _$CountryToJson(Country instance) => <String, dynamic>{
     (k, e) => MapEntry(_$ContentLanguageEnumMap[k]!, e),
   ),
   'flagUrl': instance.flagUrl,
-  'createdAt': const DateTimeConverter().toJson(instance.createdAt),
-  'updatedAt': const DateTimeConverter().toJson(instance.updatedAt),
-  'status': _$ContentStatusEnumMap[instance.status]!,
 };
 
 const _$ContentLanguageEnumMap = {
@@ -58,10 +43,4 @@ const _$ContentLanguageEnumMap = {
   ContentLanguage.zh: 'zh',
   ContentLanguage.hi: 'hi',
   ContentLanguage.ja: 'ja',
-};
-
-const _$ContentStatusEnumMap = {
-  ContentStatus.active: 'active',
-  ContentStatus.draft: 'draft',
-  ContentStatus.archived: 'archived',
 };
