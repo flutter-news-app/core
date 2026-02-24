@@ -7,6 +7,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+
+## [1.10.0] - 2026-02-24
+
 ### Added
 - **feat(ads)**: Added `appLovin` & `ironSource`  to `AdPlatformType` enum to support AppLovin (MAX) ad provider.
 
