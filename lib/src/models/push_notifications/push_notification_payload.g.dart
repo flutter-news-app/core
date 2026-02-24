@@ -14,7 +14,7 @@ PushNotificationPayload _$PushNotificationPayloadFromJson(
       'title',
       (v) => (v as Map<String, dynamic>).map(
         (k, e) =>
-            MapEntry($enumDecode(_$ContentLanguageEnumMap, k), e as String),
+            MapEntry($enumDecode(_$SupportedLanguageEnumMap, k), e as String),
       ),
     ),
     notificationId: $checkedConvert('notificationId', (v) => v as String),
@@ -36,7 +36,7 @@ Map<String, dynamic> _$PushNotificationPayloadToJson(
   PushNotificationPayload instance,
 ) => <String, dynamic>{
   'title': instance.title.map(
-    (k, e) => MapEntry(_$ContentLanguageEnumMap[k]!, e),
+    (k, e) => MapEntry(_$SupportedLanguageEnumMap[k]!, e),
   ),
   'notificationId': instance.notificationId,
   'notificationType':
@@ -47,7 +47,7 @@ Map<String, dynamic> _$PushNotificationPayloadToJson(
   'imageUrl': instance.imageUrl,
 };
 
-const _$ContentLanguageEnumMap = {
+const _$SupportedLanguageEnumMap = {
   SupportedLanguage.en: 'en',
   SupportedLanguage.es: 'es',
   SupportedLanguage.fr: 'fr',

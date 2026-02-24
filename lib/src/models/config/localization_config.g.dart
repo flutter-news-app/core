@@ -10,14 +10,14 @@ LocalizationConfig _$LocalizationConfigFromJson(Map<String, dynamic> json) =>
     $checkedCreate('LocalizationConfig', json, ($checkedConvert) {
       final val = LocalizationConfig(
         enabledLanguages: $checkedConvert(
-          'supportedLanguages',
+          'enabledLanguages',
           (v) => (v as List<dynamic>)
-              .map((e) => $enumDecode(_$ContentLanguageEnumMap, e))
+              .map((e) => $enumDecode(_$SupportedLanguageEnumMap, e))
               .toList(),
         ),
         defaultLanguage: $checkedConvert(
           'defaultLanguage',
-          (v) => $enumDecode(_$ContentLanguageEnumMap, v),
+          (v) => $enumDecode(_$SupportedLanguageEnumMap, v),
         ),
       );
       return val;
@@ -25,13 +25,13 @@ LocalizationConfig _$LocalizationConfigFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$LocalizationConfigToJson(LocalizationConfig instance) =>
     <String, dynamic>{
-      'supportedLanguages': instance.enabledLanguages
-          .map((e) => _$ContentLanguageEnumMap[e]!)
+      'enabledLanguages': instance.enabledLanguages
+          .map((e) => _$SupportedLanguageEnumMap[e]!)
           .toList(),
-      'defaultLanguage': _$ContentLanguageEnumMap[instance.defaultLanguage]!,
+      'defaultLanguage': _$SupportedLanguageEnumMap[instance.defaultLanguage]!,
     };
 
-const _$ContentLanguageEnumMap = {
+const _$SupportedLanguageEnumMap = {
   SupportedLanguage.en: 'en',
   SupportedLanguage.es: 'es',
   SupportedLanguage.fr: 'fr',

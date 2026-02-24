@@ -20,7 +20,7 @@ ContentCollectionItem<T> _$ContentCollectionItemFromJson<T extends FeedItem>(
       'title',
       (v) => (v as Map<String, dynamic>).map(
         (k, e) =>
-            MapEntry($enumDecode(_$ContentLanguageEnumMap, k), e as String),
+            MapEntry($enumDecode(_$SupportedLanguageEnumMap, k), e as String),
       ),
     ),
     items: $checkedConvert(
@@ -38,7 +38,7 @@ Map<String, dynamic> _$ContentCollectionItemToJson<T extends FeedItem>(
   'id': instance.id,
   'decoratorType': _$FeedDecoratorTypeEnumMap[instance.decoratorType]!,
   'title': instance.title.map(
-    (k, e) => MapEntry(_$ContentLanguageEnumMap[k]!, e),
+    (k, e) => MapEntry(_$SupportedLanguageEnumMap[k]!, e),
   ),
   'items': instance.items.map(toJsonT).toList(),
 };
@@ -51,7 +51,7 @@ const _$FeedDecoratorTypeEnumMap = {
   FeedDecoratorType.suggestedSources: 'suggestedSources',
 };
 
-const _$ContentLanguageEnumMap = {
+const _$SupportedLanguageEnumMap = {
   SupportedLanguage.en: 'en',
   SupportedLanguage.es: 'es',
   SupportedLanguage.fr: 'fr',

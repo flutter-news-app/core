@@ -6,67 +6,70 @@ part of 'source.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Source _$SourceFromJson(Map<String, dynamic> json) =>
-    $checkedCreate('Source', json, ($checkedConvert) {
-      final val = Source(
-        id: $checkedConvert('id', (v) => v as String),
-        name: $checkedConvert(
-          'name',
-          (v) => (v as Map<String, dynamic>).map(
-            (k, e) =>
-                MapEntry($enumDecode(_$ContentLanguageEnumMap, k), e as String),
-          ),
+Source _$SourceFromJson(Map<String, dynamic> json) => $checkedCreate(
+  'Source',
+  json,
+  ($checkedConvert) {
+    final val = Source(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert(
+        'name',
+        (v) => (v as Map<String, dynamic>).map(
+          (k, e) =>
+              MapEntry($enumDecode(_$SupportedLanguageEnumMap, k), e as String),
         ),
-        description: $checkedConvert(
-          'description',
-          (v) => (v as Map<String, dynamic>).map(
-            (k, e) =>
-                MapEntry($enumDecode(_$ContentLanguageEnumMap, k), e as String),
-          ),
+      ),
+      description: $checkedConvert(
+        'description',
+        (v) => (v as Map<String, dynamic>).map(
+          (k, e) =>
+              MapEntry($enumDecode(_$SupportedLanguageEnumMap, k), e as String),
         ),
-        url: $checkedConvert('url', (v) => v as String),
-        sourceType: $checkedConvert(
-          'sourceType',
-          (v) => $enumDecode(_$SourceTypeEnumMap, v),
-        ),
-        language: $checkedConvert(
-          'language',
-          (v) => $enumDecode(_$ContentLanguageEnumMap, v),
-        ),
-        headquarters: $checkedConvert(
-          'headquarters',
-          (v) => Country.fromJson(v as Map<String, dynamic>),
-        ),
-        createdAt: $checkedConvert(
-          'createdAt',
-          (v) => const DateTimeConverter().fromJson(v as String),
-        ),
-        updatedAt: $checkedConvert(
-          'updatedAt',
-          (v) => const DateTimeConverter().fromJson(v as String),
-        ),
-        status: $checkedConvert(
-          'status',
-          (v) => $enumDecode(_$ContentStatusEnumMap, v),
-        ),
-        logoUrl: $checkedConvert('logoUrl', (v) => v as String?),
-        mediaAssetId: $checkedConvert('mediaAssetId', (v) => v as String?),
-      );
-      return val;
-    });
+      ),
+      url: $checkedConvert('url', (v) => v as String),
+      sourceType: $checkedConvert(
+        'sourceType',
+        (v) => $enumDecode(_$SourceTypeEnumMap, v),
+      ),
+      language: $checkedConvert(
+        'language',
+        (v) => $enumDecode(_$SupportedLanguageEnumMap, v),
+      ),
+      headquarters: $checkedConvert(
+        'headquarters',
+        (v) => Country.fromJson(v as Map<String, dynamic>),
+      ),
+      createdAt: $checkedConvert(
+        'createdAt',
+        (v) => const DateTimeConverter().fromJson(v as String),
+      ),
+      updatedAt: $checkedConvert(
+        'updatedAt',
+        (v) => const DateTimeConverter().fromJson(v as String),
+      ),
+      status: $checkedConvert(
+        'status',
+        (v) => $enumDecode(_$ContentStatusEnumMap, v),
+      ),
+      logoUrl: $checkedConvert('logoUrl', (v) => v as String?),
+      mediaAssetId: $checkedConvert('mediaAssetId', (v) => v as String?),
+    );
+    return val;
+  },
+);
 
 Map<String, dynamic> _$SourceToJson(Source instance) => <String, dynamic>{
   'id': instance.id,
   'name': instance.name.map(
-    (k, e) => MapEntry(_$ContentLanguageEnumMap[k]!, e),
+    (k, e) => MapEntry(_$SupportedLanguageEnumMap[k]!, e),
   ),
   'description': instance.description.map(
-    (k, e) => MapEntry(_$ContentLanguageEnumMap[k]!, e),
+    (k, e) => MapEntry(_$SupportedLanguageEnumMap[k]!, e),
   ),
   'url': instance.url,
   'logoUrl': ?instance.logoUrl,
   'sourceType': _$SourceTypeEnumMap[instance.sourceType]!,
-  'language': _$ContentLanguageEnumMap[instance.language]!,
+  'language': _$SupportedLanguageEnumMap[instance.language]!,
   'headquarters': instance.headquarters.toJson(),
   'createdAt': const DateTimeConverter().toJson(instance.createdAt),
   'updatedAt': const DateTimeConverter().toJson(instance.updatedAt),
@@ -74,7 +77,7 @@ Map<String, dynamic> _$SourceToJson(Source instance) => <String, dynamic>{
   'mediaAssetId': ?instance.mediaAssetId,
 };
 
-const _$ContentLanguageEnumMap = {
+const _$SupportedLanguageEnumMap = {
   SupportedLanguage.en: 'en',
   SupportedLanguage.es: 'es',
   SupportedLanguage.fr: 'fr',

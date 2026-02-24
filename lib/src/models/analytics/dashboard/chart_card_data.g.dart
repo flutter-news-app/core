@@ -6,46 +6,44 @@ part of 'chart_card_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ChartCardData _$ChartCardDataFromJson(Map<String, dynamic> json) =>
-    $checkedCreate('ChartCardData', json, ($checkedConvert) {
-      final val = ChartCardData(
-        id: $checkedConvert('id', (v) => v as String),
-        cardId: $checkedConvert(
-          'cardId',
-          (v) => $enumDecode(_$ChartCardIdEnumMap, v),
+ChartCardData _$ChartCardDataFromJson(
+  Map<String, dynamic> json,
+) => $checkedCreate('ChartCardData', json, ($checkedConvert) {
+  final val = ChartCardData(
+    id: $checkedConvert('id', (v) => v as String),
+    cardId: $checkedConvert(
+      'cardId',
+      (v) => $enumDecode(_$ChartCardIdEnumMap, v),
+    ),
+    label: $checkedConvert(
+      'label',
+      (v) => (v as Map<String, dynamic>).map(
+        (k, e) =>
+            MapEntry($enumDecode(_$SupportedLanguageEnumMap, k), e as String),
+      ),
+    ),
+    type: $checkedConvert('type', (v) => $enumDecode(_$ChartTypeEnumMap, v)),
+    timeFrames: $checkedConvert(
+      'timeFrames',
+      (v) => (v as Map<String, dynamic>).map(
+        (k, e) => MapEntry(
+          $enumDecode(_$ChartTimeFrameEnumMap, k),
+          (e as List<dynamic>)
+              .map((e) => DataPoint.fromJson(e as Map<String, dynamic>))
+              .toList(),
         ),
-        label: $checkedConvert(
-          'label',
-          (v) => (v as Map<String, dynamic>).map(
-            (k, e) =>
-                MapEntry($enumDecode(_$ContentLanguageEnumMap, k), e as String),
-          ),
-        ),
-        type: $checkedConvert(
-          'type',
-          (v) => $enumDecode(_$ChartTypeEnumMap, v),
-        ),
-        timeFrames: $checkedConvert(
-          'timeFrames',
-          (v) => (v as Map<String, dynamic>).map(
-            (k, e) => MapEntry(
-              $enumDecode(_$ChartTimeFrameEnumMap, k),
-              (e as List<dynamic>)
-                  .map((e) => DataPoint.fromJson(e as Map<String, dynamic>))
-                  .toList(),
-            ),
-          ),
-        ),
-      );
-      return val;
-    });
+      ),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ChartCardDataToJson(ChartCardData instance) =>
     <String, dynamic>{
       'id': instance.id,
       'cardId': _$ChartCardIdEnumMap[instance.cardId]!,
       'label': instance.label.map(
-        (k, e) => MapEntry(_$ContentLanguageEnumMap[k]!, e),
+        (k, e) => MapEntry(_$SupportedLanguageEnumMap[k]!, e),
       ),
       'type': _$ChartTypeEnumMap[instance.type]!,
       'timeFrames': instance.timeFrames.map(
@@ -98,7 +96,7 @@ const _$ChartCardIdEnumMap = {
   ChartCardId.mediaUploadsSuccessVsFailure: 'mediaUploadsSuccessVsFailure',
 };
 
-const _$ContentLanguageEnumMap = {
+const _$SupportedLanguageEnumMap = {
   SupportedLanguage.en: 'en',
   SupportedLanguage.es: 'es',
   SupportedLanguage.fr: 'fr',

@@ -6,53 +6,56 @@ part of 'headline.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Headline _$HeadlineFromJson(Map<String, dynamic> json) =>
-    $checkedCreate('Headline', json, ($checkedConvert) {
-      final val = Headline(
-        id: $checkedConvert('id', (v) => v as String),
-        title: $checkedConvert(
-          'title',
-          (v) => (v as Map<String, dynamic>).map(
-            (k, e) =>
-                MapEntry($enumDecode(_$ContentLanguageEnumMap, k), e as String),
-          ),
+Headline _$HeadlineFromJson(Map<String, dynamic> json) => $checkedCreate(
+  'Headline',
+  json,
+  ($checkedConvert) {
+    final val = Headline(
+      id: $checkedConvert('id', (v) => v as String),
+      title: $checkedConvert(
+        'title',
+        (v) => (v as Map<String, dynamic>).map(
+          (k, e) =>
+              MapEntry($enumDecode(_$SupportedLanguageEnumMap, k), e as String),
         ),
-        url: $checkedConvert('url', (v) => v as String),
-        source: $checkedConvert(
-          'source',
-          (v) => Source.fromJson(v as Map<String, dynamic>),
-        ),
-        eventCountry: $checkedConvert(
-          'eventCountry',
-          (v) => Country.fromJson(v as Map<String, dynamic>),
-        ),
-        topic: $checkedConvert(
-          'topic',
-          (v) => Topic.fromJson(v as Map<String, dynamic>),
-        ),
-        createdAt: $checkedConvert(
-          'createdAt',
-          (v) => const DateTimeConverter().fromJson(v as String),
-        ),
-        updatedAt: $checkedConvert(
-          'updatedAt',
-          (v) => const DateTimeConverter().fromJson(v as String),
-        ),
-        status: $checkedConvert(
-          'status',
-          (v) => $enumDecode(_$ContentStatusEnumMap, v),
-        ),
-        isBreaking: $checkedConvert('isBreaking', (v) => v as bool),
-        imageUrl: $checkedConvert('imageUrl', (v) => v as String?),
-        mediaAssetId: $checkedConvert('mediaAssetId', (v) => v as String?),
-      );
-      return val;
-    });
+      ),
+      url: $checkedConvert('url', (v) => v as String),
+      source: $checkedConvert(
+        'source',
+        (v) => Source.fromJson(v as Map<String, dynamic>),
+      ),
+      eventCountry: $checkedConvert(
+        'eventCountry',
+        (v) => Country.fromJson(v as Map<String, dynamic>),
+      ),
+      topic: $checkedConvert(
+        'topic',
+        (v) => Topic.fromJson(v as Map<String, dynamic>),
+      ),
+      createdAt: $checkedConvert(
+        'createdAt',
+        (v) => const DateTimeConverter().fromJson(v as String),
+      ),
+      updatedAt: $checkedConvert(
+        'updatedAt',
+        (v) => const DateTimeConverter().fromJson(v as String),
+      ),
+      status: $checkedConvert(
+        'status',
+        (v) => $enumDecode(_$ContentStatusEnumMap, v),
+      ),
+      isBreaking: $checkedConvert('isBreaking', (v) => v as bool),
+      imageUrl: $checkedConvert('imageUrl', (v) => v as String?),
+      mediaAssetId: $checkedConvert('mediaAssetId', (v) => v as String?),
+    );
+    return val;
+  },
+);
 
 Map<String, dynamic> _$HeadlineToJson(Headline instance) => <String, dynamic>{
   'id': instance.id,
   'title': instance.title.map(
-    (k, e) => MapEntry(_$ContentLanguageEnumMap[k]!, e),
+    (k, e) => MapEntry(_$SupportedLanguageEnumMap[k]!, e),
   ),
   'url': instance.url,
   'imageUrl': ?instance.imageUrl,
@@ -66,7 +69,7 @@ Map<String, dynamic> _$HeadlineToJson(Headline instance) => <String, dynamic>{
   'mediaAssetId': ?instance.mediaAssetId,
 };
 
-const _$ContentLanguageEnumMap = {
+const _$SupportedLanguageEnumMap = {
   SupportedLanguage.en: 'en',
   SupportedLanguage.es: 'es',
   SupportedLanguage.fr: 'fr',
