@@ -1,3 +1,4 @@
+import 'package:core/src/enums/content_language.dart';
 import 'package:core/src/enums/content_type.dart';
 import 'package:core/src/enums/push_notification_subscription_delivery_type.dart';
 import 'package:equatable/equatable.dart';
@@ -31,7 +32,7 @@ class PushNotificationPayload extends Equatable {
       _$PushNotificationPayloadFromJson(json);
 
   /// The title of the notification.
-  final String title;
+  final Map<ContentLanguage, String> title;
 
   /// The unique identifier of the notification.
   final String notificationId;
@@ -64,7 +65,7 @@ class PushNotificationPayload extends Equatable {
   /// Creates a copy of this [PushNotificationPayload] but with the given fields
   /// replaced with the new values.
   PushNotificationPayload copyWith({
-    String? title,
+    Map<ContentLanguage, String>? title,
     String? notificationId,
     PushNotificationSubscriptionDeliveryType? notificationType,
     ContentType? contentType,
