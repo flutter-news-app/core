@@ -32,7 +32,7 @@ class PushNotificationPayload extends Equatable {
       _$PushNotificationPayloadFromJson(json);
 
   /// The title of the notification.
-  final Map<SupportedLanguage, String> title;
+  final String title;
 
   /// The unique identifier of the notification.
   final String notificationId;
@@ -65,7 +65,7 @@ class PushNotificationPayload extends Equatable {
   /// Creates a copy of this [PushNotificationPayload] but with the given fields
   /// replaced with the new values.
   PushNotificationPayload copyWith({
-    Map<SupportedLanguage, String>? title,
+    String? title,
     String? notificationId,
     PushNotificationSubscriptionDeliveryType? notificationType,
     ContentType? contentType,

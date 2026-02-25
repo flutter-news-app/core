@@ -48,7 +48,7 @@ void main() {
 
     test('copyWith creates a copy with updated values', () {
       // Arrange: Define the updated values.
-      const newTitle = {SupportedLanguage.en: 'Updated News'};
+      const newTitle = 'Updated News';
       const newContentId = 'new-content-id';
 
       // Act: Create a copy with the updated values.
