@@ -1,6 +1,5 @@
 import 'package:core/src/enums/content_type.dart';
 import 'package:core/src/enums/push_notification_subscription_delivery_type.dart';
-import 'package:core/src/enums/supported_language.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
