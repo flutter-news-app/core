@@ -6,8 +6,8 @@ enum AdPlatformType {
   admob,
 
   /// AppLovin (MAX) platform.
-  appLovin,
+  // appLovin,
 
   /// ironSource platform.
-  ironSource,
+  // ironSource,
 }
