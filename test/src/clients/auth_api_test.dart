@@ -168,15 +168,18 @@ void main() {
           ),
         );
         when(
-          () => mockHttpClient.post<void>(any(), data: any(named: 'data')),
+          () => mockHttpClient.post<void>(
+            any<String>(),
+            data: any<dynamic>(named: 'data'),
+          ),
         ).thenAnswer((_) async {});
         when(
           () => mockHttpClient.post<void>('/api/v1/auth/sign-out'),
         ).thenAnswer((_) async {});
         when(
           () => mockHttpClient.post<Map<String, dynamic>>(
-            any(),
-            data: any(named: 'data'),
+            any<String>(),
+            data: any<dynamic>(named: 'data'),
           ),
         ).thenAnswer(
           (_) async => successAuthResponseToJson(
@@ -388,7 +391,10 @@ void main() {
           () => mockHttpClient.get<Map<String, dynamic>>('/api/v1/auth/me'),
         ).thenThrow(const UnauthorizedException('No session'));
         when(
-          () => mockHttpClient.post<void>(any(), data: any(named: 'data')),
+          () => mockHttpClient.post<void>(
+            any<String>(),
+            data: any<dynamic>(named: 'data'),
+          ),
         ).thenAnswer((_) async {});
         when(
           () => mockHttpClient.post<void>('/api/v1/auth/sign-out'),
@@ -399,7 +405,7 @@ void main() {
         when(
           () => mockHttpClient.post<Map<String, dynamic>>(
             '/api/v1/auth/verify-code',
-            data: any(named: 'data'),
+            data: any<dynamic>(named: 'data'),
           ),
         ).thenAnswer(
           (_) async => successAuthResponseToJson(
@@ -412,7 +418,7 @@ void main() {
         when(
           () => mockHttpClient.post<Map<String, dynamic>>(
             '/api/v1/auth/anonymous',
-            data: any(named: 'data'),
+            data: any<dynamic>(named: 'data'),
           ),
         ).thenAnswer(
           (_) async => successAuthResponseToJson(
@@ -465,7 +471,7 @@ void main() {
         when(
           () => mockHttpClient.post<void>(
             '/api/v1/auth/request-code',
-            data: any(named: 'data'),
+            data: any<dynamic>(named: 'data'),
           ),
         ).thenThrow(exception);
         await expectLater(
@@ -526,7 +532,7 @@ void main() {
         when(
           () => mockHttpClient.post<Map<String, dynamic>>(
             '/api/v1/auth/verify-code',
-            data: any(named: 'data'),
+            data: any<dynamic>(named: 'data'),
           ),
         ).thenThrow(exception);
         await expectLater(
@@ -690,7 +696,7 @@ void main() {
         mockLogger = MockLogger();
         registerFallbackValue(Uri.parse('http://fallback.com'));
         when(
-          () => mockHttpClient.get<Map<String, dynamic>>(any()),
+          () => mockHttpClient.get<Map<String, dynamic>>(any<String>()),
         ).thenThrow(const UnauthorizedException('No session'));
         authApi = AuthApi(httpClient: mockHttpClient, logger: mockLogger);
         await pumpEventQueue(); // Allow _initializeAuthStatus to complete
