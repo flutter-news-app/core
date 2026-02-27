@@ -8,5 +8,6 @@ export 'network_exception.dart';
 export 'not_found_exception.dart';
 export 'operation_failed_exception.dart';
 export 'server_exception.dart';
+export 'storage_exceptions.dart';
 export 'unauthorized_exception.dart';
 export 'unknown_exception.dart';
