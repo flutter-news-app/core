@@ -316,10 +316,7 @@ void main() {
         final exception = OperationFailedException('Sign out failed');
         when(() => mockAuthClient.signOut()).thenThrow(exception);
 
-        await expectLater(
-          () => authRepository.signOut(),
-          throwsA(exception),
-        );
+        await expectLater(() => authRepository.signOut(), throwsA(exception));
         verify(() => mockAuthClient.signOut()).called(1);
         verifyNever(() => mockStorageService.delete(key: any(named: 'key')));
       });
@@ -337,10 +334,7 @@ void main() {
             ),
           ).thenThrow(exception);
 
-          await expectLater(
-            () => authRepository.signOut(),
-            throwsA(exception),
-          );
+          await expectLater(() => authRepository.signOut(), throwsA(exception));
           verify(() => mockAuthClient.signOut()).called(1);
           verify(
             () => mockStorageService.delete(

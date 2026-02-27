@@ -86,9 +86,9 @@ void main() {
       when(
         () => mockStorageService.readDouble(key: any(named: 'key')),
       ).thenAnswer((_) async => null);
-      when(
-        () => mockStorageService.delete(key: any(named: 'key')),
-      ).thenAnswer((_) async {
+      when(() => mockStorageService.delete(key: any(named: 'key'))).thenAnswer((
+        _,
+      ) async {
         return;
       });
       when(() => mockStorageService.clearAll()).thenAnswer((_) async {
