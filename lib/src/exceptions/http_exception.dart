@@ -1,6 +1,5 @@
 /// Base class for a standardized set of exceptions used across *all* data
-/// client implementations (e.g., HTTP, In-Memory, Database) within the
-/// Headlines Toolkit (HT) ecosystem.
+/// client implementations (e.g., HTTP, In-Memory, Database)
 ///
 /// The primary goal is to provide a consistent error handling contract for
 /// higher layers like Repositories, BLoCs, or API Route Handlers, regardless

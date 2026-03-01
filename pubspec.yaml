@@ -1,7 +1,7 @@
 name: core
 description: Shared utilities and models.
 publish_to: none
-repository: https://github.com/flutter-news-app-full-source-code/core
+repository: https://github.com/flutter-news-app/core
 version: 2.0.0
 
 environment:
