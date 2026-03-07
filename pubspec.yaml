@@ -1,7 +1,7 @@
 name: core
 description: Shared utilities and models.
 publish_to: none
-repository: https://github.com/flutter-news-app/core
+repository: https://github.com/verity-hq/core
 version: 2.1.0
 
 environment:
