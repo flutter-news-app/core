@@ -1,3 +1,4 @@
+import 'package:core/src/models/automation/news_automation_task.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 /// {@template fetch_interval}
