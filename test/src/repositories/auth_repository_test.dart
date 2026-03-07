@@ -3,7 +3,7 @@
 
 import 'dart:async';
 
-import 'package:core/src/src.dart';
+import 'package:core/core.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
