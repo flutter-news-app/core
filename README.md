@@ -3,7 +3,7 @@
   <a href="https://github.com/verity-hq"><img src="https://img.shields.io/badge/MAIN_PROJECT-BROWSE-purple?style=for-the-badge" alt="Main Project: Browse"></a>
 </p>
 
-This `core` package serves as the foundational shared library for the **Verity News System** ensuring consistency and accelerate development across the mobile app, web dashboard, and backend API.
+This `core` package serves as the foundational shared library for the **Verity News Stack** ensuring consistency and accelerate development across the mobile app, web dashboard, and backend API.
 
 ## 🔑 Licensing
 
