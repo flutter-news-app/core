@@ -112,4 +112,13 @@ enum ChartCardId {
 
   /// A bar chart comparing successful vs. failed uploads.
   mediaUploadsSuccessVsFailure,
+
+  // --- Ingestion Management ---
+  /// A line chart showing the trend of headlines fetched over time.
+  ingestionHeadlinesOverTime,
+
+  /// A bar chart showing the distribution of automation tasks by status
+  /// (active, paused, error). This provides a high-level view of
+  /// pipeline health.
+  ingestionTaskStatusDistribution,
 }

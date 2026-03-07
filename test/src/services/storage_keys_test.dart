@@ -1,6 +1,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:core/src/src.dart';
+import 'package:core/core.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -1,5 +1,6 @@
 export 'analytics/analytics.dart';
 export 'auth/auth.dart';
+export 'automation/automation.dart';
 export 'config/config.dart';
 export 'entities/entities.dart';
 export 'feed/feed.dart';

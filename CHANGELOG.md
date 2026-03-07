@@ -7,6 +7,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added
+- **feat(ingestion)**: Introduced `NewsAutomationTask` and associated enums (`FetchInterval`, `IngestionStatus`) to support automated news fetching. This infrastructure decouples the dashboard's intent from the API's provider implementation.
+- **feat(analytics)**: Added ingestion-specific identifiers to `KpiCardId` and `ChartCardId` to support database-driven operational metrics for the dashboard.
+
 ## [2.0.0] - 2026-03-1
 
 ### Added

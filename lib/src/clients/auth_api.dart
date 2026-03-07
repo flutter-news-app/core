@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:core/src/src.dart';
+import 'package:core/core.dart';
 import 'package:logging/logging.dart';
 
 /// {@template auth_api}

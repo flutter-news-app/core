@@ -5,7 +5,7 @@ void main() {
   group('KpiCardId', () {
     test('has correct number of values', () {
       // This test is fragile and will need updates if the enum changes.
-      expect(KpiCardId.values.length, 27);
+      expect(KpiCardId.values.length, 30);
     });
 
     test('has correct string names', () {
@@ -14,6 +14,7 @@ void main() {
         KpiCardId.engagementsAppReviewsStoreRequests.name,
         'engagementsAppReviewsStoreRequests',
       );
+      expect(KpiCardId.ingestionActiveTasks.name, 'ingestionActiveTasks');
     });
 
     test('can be created from string names', () {

@@ -25,6 +25,7 @@ export 'feed_item_click_behavior.dart';
 export 'feed_item_density.dart';
 export 'feed_item_image_style.dart';
 export 'headline_report_reason.dart';
+export 'ingestion_enums.dart';
 export 'kpi_card_id.dart';
 export 'kpi_time_frame.dart';
 export 'limited_action.dart';

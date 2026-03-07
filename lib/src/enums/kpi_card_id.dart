@@ -99,4 +99,14 @@ enum KpiCardId {
 
   /// KPI card for the average upload time in seconds.
   mediaAverageUploadTime,
+
+  // --- Ingestion Management ---
+  /// KPI card for the total number of active automation tasks.
+  ingestionActiveTasks,
+
+  /// KPI card for the number of automation tasks currently in 'error' state.
+  ingestionFailedTasks,
+
+  /// KPI card for the total number of headlines fetched.
+  ingestionHeadlinesFetched,
 }
