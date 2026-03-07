@@ -9,7 +9,7 @@
   <a href="https://github.com/flutter-news-app"><img src="https://img.shields.io/badge/MAIN_PROJECT-BROWSE-purple?style=for-the-badge" alt="Main Project: Browse"></a>
 </p>
 
-This `core` package serves as the foundational shared library for the **Flutter News App Full Source Code** ensuring consistency and accelerate development across the Flutter mobile app, web dashboard, and Dart Frog backend API.
+This `core` package serves as the foundational shared library for the **Flutter News App** ensuring consistency and accelerate development across the Flutter mobile app, web dashboard, and Dart Frog backend API.
 
 ## 🔑 Licensing
 
