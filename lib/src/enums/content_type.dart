@@ -15,5 +15,6 @@ enum ContentType {
   /// Refers to a country.
   country,
 
-  // Add other content types as needed (e.g., author, topic)
+  /// Refers to a person of interest.
+  person,
 }
