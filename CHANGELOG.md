@@ -7,6 +7,26 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added
+- **feat(models)**: Introduced the `Person` entity to represent individuals
+  mentioned in news content.
+- **feat(analytics)**: Added dashboard KPI and Chart identifiers for the new
+  `Person` entity.
+- **feat(enums)**: Added `ContentType.person`, `LimitedAction.followPerson`,
+  `MediaAssetEntityType.person`, and `MediaAssetPurpose.personPhoto`.
+
+### Changed
+- **BREAKING refactor(models)**: Refactored `Headline` to replace singular
+  `eventCountry` with plural `mentionedCountries` and `mentionedPersons`.
+- **BREAKING refactor(models)**: Updated `HeadlineFilterCriteria` to require
+  the `persons` list for strict content filtering.
+- **refactor(models)**: Updated `UserContentPreferences` to include
+  `followedPersons` for granular user interest tracking.
+- **refactor(analytics)**: Added dashboard KPI and Chart identifiers to track
+  absolute entity volume and visibility (e.g., `contentPersonsTotalMentions`).
+- **refactor(feed)**: Updated `FeedItem` polymorphic serialization to support
+  `Person` and `ContentCollectionItem<Person>`.
+
 ## [2.1.0] - 2026-03-1
 
 ### Added
