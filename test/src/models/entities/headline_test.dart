@@ -3,8 +3,28 @@ import 'package:test/test.dart';
 
 void main() {
   group('Headline Model', () {
-    // Use the first headline from the fixtures as the base for testing.
-    final headlineFixture = getHeadlinesFixturesData().first;
+    const mockPerson = Person(
+      id: 'person-1',
+      name: const {SupportedLanguage.en: 'John Doe'},
+      description: const {SupportedLanguage.en: 'An interesting person.'},
+    );
+
+    final headlineFixture = Headline(
+      id: 'h-1',
+      title: const {SupportedLanguage.en: 'Sample Headline'},
+      url: 'https://example.com/news/1',
+      imageUrl: 'https://example.com/image/1.jpg',
+      source: getSourcesFixturesData().first,
+      topic: getTopicsFixturesData().first,
+      createdAt: DateTime.parse('2024-01-01T10:00:00Z'),
+      updatedAt: DateTime.parse('2024-01-01T11:00:00Z'),
+      status: ContentStatus.active,
+      isBreaking: false,
+      mediaAssetId: 'media-1',
+      mentionedCountries: [countriesFixturesData.first],
+      mentionedPersons: [mockPerson],
+    );
+
     final headlineJson = headlineFixture.toJson();
 
     group('fromJson', () {
@@ -37,6 +57,14 @@ void main() {
         expect(copiedHeadline.url, updatedUrl);
         expect(copiedHeadline.mediaAssetId, updatedMediaAssetId);
         expect(copiedHeadline.imageUrl, headlineFixture.imageUrl);
+        expect(
+          copiedHeadline.mentionedCountries,
+          headlineFixture.mentionedCountries,
+        );
+        expect(
+          copiedHeadline.mentionedPersons,
+          headlineFixture.mentionedPersons,
+        );
         expect(copiedHeadline.source, headlineFixture.source);
         expect(copiedHeadline.topic, headlineFixture.topic);
         expect(copiedHeadline.createdAt, headlineFixture.createdAt);
@@ -75,7 +103,7 @@ void main() {
       });
 
       test('props list should contain all relevant fields', () {
-        expect(headlineFixture.props.length, 13);
+        expect(headlineFixture.props.length, 14);
         expect(headlineFixture.props, [
           headlineFixture.id,
           headlineFixture.title,
@@ -85,11 +113,12 @@ void main() {
           headlineFixture.updatedAt,
           headlineFixture.status,
           headlineFixture.source,
-          headlineFixture.eventCountry,
           headlineFixture.topic,
           headlineFixture.isBreaking,
           headlineFixture.mediaAssetId,
           headlineFixture.type,
+          headlineFixture.mentionedCountries,
+          headlineFixture.mentionedPersons,
         ]);
       });
     });
