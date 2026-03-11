@@ -1,7 +1,4 @@
-import 'package:core/src/models/entities/country.dart';
-import 'package:core/src/models/entities/source.dart';
-import 'package:core/src/models/entities/topic.dart';
-import 'package:core/src/models/user_preferences/saved_headline_filter.dart';
+import 'package:core/core.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
@@ -24,6 +21,7 @@ class HeadlineFilterCriteria extends Equatable {
     required this.topics,
     required this.sources,
     required this.countries,
+    required this.persons,
   });
 
   /// Creates an [HeadlineFilterCriteria] from JSON data.
@@ -42,11 +40,14 @@ class HeadlineFilterCriteria extends Equatable {
   /// An empty list means no country filter is applied.
   final List<Country> countries;
 
+  /// The list of persons to include in the filter.
+  final List<Person> persons;
+
   /// Converts this [HeadlineFilterCriteria] instance to JSON data.
   Map<String, dynamic> toJson() => _$HeadlineFilterCriteriaToJson(this);
 
   @override
-  List<Object> get props => [topics, sources, countries];
+  List<Object> get props => [topics, sources, countries, persons];
 
   /// Creates a copy of this [HeadlineFilterCriteria] but with the given fields
   /// replaced with the new values.
@@ -54,11 +55,13 @@ class HeadlineFilterCriteria extends Equatable {
     List<Topic>? topics,
     List<Source>? sources,
     List<Country>? countries,
+    List<Person>? persons,
   }) {
     return HeadlineFilterCriteria(
       topics: topics ?? this.topics,
       sources: sources ?? this.sources,
       countries: countries ?? this.countries,
+      persons: persons ?? this.persons,
     );
   }
 }
