@@ -19,12 +19,13 @@ class Headline extends FeedItem {
     required this.title,
     required this.url,
     required this.source,
-    required this.eventCountry,
     required this.topic,
     required this.createdAt,
     required this.updatedAt,
     required this.status,
     required this.isBreaking,
+    this.mentionedCountries = const [],
+    this.mentionedPersons = const [],
     this.imageUrl,
     this.mediaAssetId,
   }) : super(type: 'headline');
@@ -50,9 +51,6 @@ class Headline extends FeedItem {
 
   /// Source or origin of the headline.
   final Source source;
-
-  /// The country where the news event took place.
-  final Country eventCountry;
 
   /// The internal timestamp recording when this headline was first ingested
   /// and saved into our system.
@@ -84,6 +82,12 @@ class Headline extends FeedItem {
   @JsonKey(includeIfNull: false)
   final String? mediaAssetId;
 
+  /// A list of countries mentioned in the headline.
+  final List<Country> mentionedCountries;
+
+  /// A list of persons mentioned in the headline.
+  final List<Person> mentionedPersons;
+
   /// Converts this [Headline] instance to a JSON map.
   Map<String, dynamic> toJson() {
     final json = _$HeadlineToJson(this);
@@ -101,11 +105,12 @@ class Headline extends FeedItem {
     updatedAt,
     status,
     source,
-    eventCountry,
     topic,
     isBreaking,
     mediaAssetId,
     type,
+    mentionedCountries,
+    mentionedPersons,
   ];
 
   @override
@@ -122,10 +127,11 @@ class Headline extends FeedItem {
     DateTime? updatedAt,
     ContentStatus? status,
     Source? source,
-    Country? eventCountry,
     Topic? topic,
     bool? isBreaking,
     ValueWrapper<String?>? mediaAssetId,
+    List<Country>? mentionedCountries,
+    List<Person>? mentionedPersons,
   }) {
     return Headline(
       id: id ?? this.id,
@@ -139,9 +145,10 @@ class Headline extends FeedItem {
       updatedAt: updatedAt ?? this.updatedAt,
       status: status ?? this.status,
       source: source ?? this.source,
-      eventCountry: eventCountry ?? this.eventCountry,
       topic: topic ?? this.topic,
       isBreaking: isBreaking ?? this.isBreaking,
+      mentionedCountries: mentionedCountries ?? this.mentionedCountries,
+      mentionedPersons: mentionedPersons ?? this.mentionedPersons,
     );
   }
 }
