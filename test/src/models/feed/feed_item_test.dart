@@ -9,8 +9,8 @@ void main() {
     final mockCountry = countriesFixturesData.first;
     const mockPerson = Person(
       id: 'person-1',
-      name: const {SupportedLanguage.en: 'John Doe'},
-      description: const {SupportedLanguage.en: 'An interesting person.'},
+      name: {SupportedLanguage.en: 'John Doe'},
+      description: {SupportedLanguage.en: 'An interesting person.'},
       imageUrl: 'https://example.com/person/1.jpg',
     );
 
@@ -42,7 +42,7 @@ void main() {
     final mockContentCollectionPerson = ContentCollectionItem<Person>(
       id: 'cc-person-1',
       decoratorType: FeedDecoratorType.suggestedTopics, // Placeholder
-      items: [mockPerson],
+      items: const [mockPerson],
       title: const {SupportedLanguage.en: 'Mentioned People'},
     );
 
