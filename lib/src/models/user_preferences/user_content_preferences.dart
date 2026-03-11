@@ -28,6 +28,7 @@ class UserContentPreferences extends Equatable {
     required this.followedCountries,
     required this.followedSources,
     required this.followedTopics,
+    required this.followedPersons,
     required this.savedHeadlines,
     required this.savedHeadlineFilters,
   });
@@ -48,6 +49,9 @@ class UserContentPreferences extends Equatable {
   /// List of topics the user is following.
   final List<Topic> followedTopics;
 
+  /// List of persons the user is following.
+  final List<Person> followedPersons;
+
   /// List of headlines the user has saved.
   final List<Headline> savedHeadlines;
 
@@ -63,6 +67,7 @@ class UserContentPreferences extends Equatable {
     followedCountries,
     followedSources,
     followedTopics,
+    followedPersons,
     savedHeadlines,
     savedHeadlineFilters,
   ];
@@ -77,12 +82,14 @@ class UserContentPreferences extends Equatable {
     List<Country>? followedCountries,
     List<Source>? followedSources,
     List<Topic>? followedTopics,
+    List<Person>? followedPersons,
     List<Headline>? savedHeadlines,
     List<SavedHeadlineFilter>? savedHeadlineFilters,
   }) {
     return UserContentPreferences(
       id: id ?? this.id,
       followedCountries: followedCountries ?? this.followedCountries,
+      followedPersons: followedPersons ?? this.followedPersons,
       followedSources: followedSources ?? this.followedSources,
       followedTopics: followedTopics ?? this.followedTopics,
       savedHeadlines: savedHeadlines ?? this.savedHeadlines,
