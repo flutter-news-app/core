@@ -30,7 +30,7 @@ class UserLimitsConfig extends Equatable {
       _$UserLimitsConfigFromJson(json);
 
   /// Tier-based limits for the number of followed items (topics, sources,
-  /// countries). The limit applies to each category individually.
+  /// countries, persons). The limit applies to each category individually.
   final Map<AccessTier, int> followedItems;
 
   /// Tier-based limits for the number of saved headlines.

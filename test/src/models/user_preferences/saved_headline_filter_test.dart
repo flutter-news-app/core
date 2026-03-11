@@ -74,6 +74,7 @@ void main() {
           topics: [],
           sources: [],
           countries: [],
+          persons: [],
         ),
       );
       final json = model.toJson();

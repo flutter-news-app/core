@@ -5,8 +5,8 @@ void main() {
   group('Headline Model', () {
     const mockPerson = Person(
       id: 'person-1',
-      name: const {SupportedLanguage.en: 'John Doe'},
-      description: const {SupportedLanguage.en: 'An interesting person.'},
+      name: {SupportedLanguage.en: 'John Doe'},
+      description: {SupportedLanguage.en: 'An interesting person.'},
     );
 
     final headlineFixture = Headline(
@@ -22,7 +22,7 @@ void main() {
       isBreaking: false,
       mediaAssetId: 'media-1',
       mentionedCountries: [countriesFixturesData.first],
-      mentionedPersons: [mockPerson],
+      mentionedPersons: const [mockPerson],
     );
 
     final headlineJson = headlineFixture.toJson();

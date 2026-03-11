@@ -2,7 +2,7 @@ import 'package:core/core.dart';
 
 /// Generates a list of predefined persons for fixture data.
 List<Person> getPersonsFixturesData() {
-  return  [
+  return [
     const Person(
       id: kPersonId1,
       name: {SupportedLanguage.en: 'John Doe'},

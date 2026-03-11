@@ -1,6 +1,7 @@
 import 'package:core/core.dart' show Headline, Person, Source, Topic, User;
 import 'package:core/src/models/media/media_asset.dart' show MediaAsset;
-import 'package:core/src/models/models.dart' show Headline, Person, Source, Topic, User;
+import 'package:core/src/models/models.dart'
+    show Headline, Person, Source, Topic, User;
 import 'package:json_annotation/json_annotation.dart';
 
 /// {@template media_asset_entity_type}
