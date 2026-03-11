@@ -7,6 +7,12 @@ void main() {
     final mockTopic = getTopicsFixturesData().first;
     final mockSource = getSourcesFixturesData().first;
     final mockCountry = countriesFixturesData.first;
+    const mockPerson = Person(
+      id: 'person-1',
+      name: const {SupportedLanguage.en: 'John Doe'},
+      description: const {SupportedLanguage.en: 'An interesting person.'},
+      imageUrl: 'https://example.com/person/1.jpg',
+    );
 
     const mockCallToAction = CallToActionItem(
       id: 'cta-1',
@@ -31,6 +37,13 @@ void main() {
       decoratorType: FeedDecoratorType.suggestedSources,
       items: getSourcesFixturesData().take(3).toList(),
       title: const {SupportedLanguage.en: 'Suggested Sources'},
+    );
+
+    final mockContentCollectionPerson = ContentCollectionItem<Person>(
+      id: 'cc-person-1',
+      decoratorType: FeedDecoratorType.suggestedTopics, // Placeholder
+      items: [mockPerson],
+      title: const {SupportedLanguage.en: 'Mentioned People'},
     );
 
     group('fromJson', () {
@@ -62,6 +75,13 @@ void main() {
         expect(feedItem, equals(mockCountry));
       });
 
+      test('dispatches to Person.fromJson', () {
+        final json = mockPerson.toJson();
+        final feedItem = FeedItem.fromJson(json);
+        expect(feedItem, isA<Person>());
+        expect(feedItem, equals(mockPerson));
+      });
+
       test('dispatches to CallToAction.fromJson', () {
         final json = mockCallToAction.toJson();
         final feedItem = FeedItem.fromJson(json);
@@ -85,6 +105,15 @@ void main() {
         final feedItem = FeedItem.fromJson(json);
         expect(feedItem, isA<ContentCollectionItem<Source>>());
         expect(feedItem, equals(mockContentCollectionSource));
+      });
+
+      test('dispatches to ContentCollectionItem<Person>.fromJson', () {
+        final json = mockContentCollectionPerson.toJson(
+          (person) => person.toJson(),
+        );
+        final feedItem = FeedItem.fromJson(json);
+        expect(feedItem, isA<ContentCollectionItem<Person>>());
+        expect(feedItem, equals(mockContentCollectionPerson));
       });
 
       test(
@@ -182,6 +211,12 @@ void main() {
         expect(deserialized.toJson(), equals(json));
       });
 
+      test('serializes Person correctly', () {
+        final json = mockPerson.toJson();
+        final deserialized = FeedItem.fromJson(json) as Person;
+        expect(deserialized.toJson(), equals(json));
+      });
+
       test('serializes CallToAction correctly', () {
         final json = mockCallToAction.toJson();
         final deserialized = FeedItem.fromJson(json) as CallToActionItem;
@@ -195,6 +230,15 @@ void main() {
         final deserialized =
             FeedItem.fromJson(json) as ContentCollectionItem<Topic>;
         expect(deserialized.toJson((topic) => topic.toJson()), equals(json));
+      });
+
+      test('serializes ContentCollectionItem<Person> correctly', () {
+        final json = mockContentCollectionPerson.toJson(
+          (person) => person.toJson(),
+        );
+        final deserialized =
+            FeedItem.fromJson(json) as ContentCollectionItem<Person>;
+        expect(deserialized.toJson((person) => person.toJson()), equals(json));
       });
     });
   });
