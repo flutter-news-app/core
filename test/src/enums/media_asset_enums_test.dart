@@ -9,6 +9,7 @@ void main() {
         MediaAssetEntityType.headline,
         MediaAssetEntityType.topic,
         MediaAssetEntityType.source,
+        MediaAssetEntityType.person,
       ]);
     });
   });
@@ -20,6 +21,7 @@ void main() {
         MediaAssetPurpose.headlineImage,
         MediaAssetPurpose.topicImage,
         MediaAssetPurpose.sourceImage,
+        MediaAssetPurpose.personPhoto,
       ]);
     });
   });

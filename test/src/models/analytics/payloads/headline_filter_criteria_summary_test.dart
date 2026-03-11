@@ -10,6 +10,7 @@ void main() {
       topics: topicsFixture,
       sources: sourcesFixture,
       countries: const [],
+      persons: const [],
     );
 
     const summary = HeadlineFilterCriteriaSummary(
@@ -44,6 +45,7 @@ void main() {
           topics: [],
           sources: [],
           countries: [],
+          persons: [],
         );
         final generatedSummary = HeadlineFilterCriteriaSummary.fromCriteria(
           emptyCriteria,
