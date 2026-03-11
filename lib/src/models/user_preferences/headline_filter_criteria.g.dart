@@ -28,6 +28,12 @@ HeadlineFilterCriteria _$HeadlineFilterCriteriaFromJson(
           .map((e) => Country.fromJson(e as Map<String, dynamic>))
           .toList(),
     ),
+    persons: $checkedConvert(
+      'persons',
+      (v) => (v as List<dynamic>)
+          .map((e) => Person.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    ),
   );
   return val;
 });
@@ -38,4 +44,5 @@ Map<String, dynamic> _$HeadlineFilterCriteriaToJson(
   'topics': instance.topics.map((e) => e.toJson()).toList(),
   'sources': instance.sources.map((e) => e.toJson()).toList(),
   'countries': instance.countries.map((e) => e.toJson()).toList(),
+  'persons': instance.persons.map((e) => e.toJson()).toList(),
 };

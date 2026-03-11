@@ -94,6 +94,9 @@ const _$KpiCardIdEnumMap = {
   KpiCardId.mediaTotalUploads: 'mediaTotalUploads',
   KpiCardId.mediaFailedUploads: 'mediaFailedUploads',
   KpiCardId.mediaAverageUploadTime: 'mediaAverageUploadTime',
+  KpiCardId.ingestionActiveTasks: 'ingestionActiveTasks',
+  KpiCardId.ingestionFailedTasks: 'ingestionFailedTasks',
+  KpiCardId.ingestionHeadlinesFetched: 'ingestionHeadlinesFetched',
 };
 
 const _$SupportedLanguageEnumMap = {

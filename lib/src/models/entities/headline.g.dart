@@ -24,10 +24,6 @@ Headline _$HeadlineFromJson(Map<String, dynamic> json) => $checkedCreate(
         'source',
         (v) => Source.fromJson(v as Map<String, dynamic>),
       ),
-      eventCountry: $checkedConvert(
-        'eventCountry',
-        (v) => Country.fromJson(v as Map<String, dynamic>),
-      ),
       topic: $checkedConvert(
         'topic',
         (v) => Topic.fromJson(v as Map<String, dynamic>),
@@ -45,6 +41,22 @@ Headline _$HeadlineFromJson(Map<String, dynamic> json) => $checkedCreate(
         (v) => $enumDecode(_$ContentStatusEnumMap, v),
       ),
       isBreaking: $checkedConvert('isBreaking', (v) => v as bool),
+      mentionedCountries: $checkedConvert(
+        'mentionedCountries',
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map((e) => Country.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            const [],
+      ),
+      mentionedPersons: $checkedConvert(
+        'mentionedPersons',
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            const [],
+      ),
       imageUrl: $checkedConvert('imageUrl', (v) => v as String?),
       mediaAssetId: $checkedConvert('mediaAssetId', (v) => v as String?),
     );
@@ -60,13 +72,16 @@ Map<String, dynamic> _$HeadlineToJson(Headline instance) => <String, dynamic>{
   'url': instance.url,
   'imageUrl': ?instance.imageUrl,
   'source': instance.source.toJson(),
-  'eventCountry': instance.eventCountry.toJson(),
   'createdAt': const DateTimeConverter().toJson(instance.createdAt),
   'updatedAt': const DateTimeConverter().toJson(instance.updatedAt),
   'status': _$ContentStatusEnumMap[instance.status]!,
   'isBreaking': instance.isBreaking,
   'topic': instance.topic.toJson(),
   'mediaAssetId': ?instance.mediaAssetId,
+  'mentionedCountries': instance.mentionedCountries
+      .map((e) => e.toJson())
+      .toList(),
+  'mentionedPersons': instance.mentionedPersons.map((e) => e.toJson()).toList(),
 };
 
 const _$SupportedLanguageEnumMap = {

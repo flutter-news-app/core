@@ -29,6 +29,12 @@ UserContentPreferences _$UserContentPreferencesFromJson(
           .map((e) => Topic.fromJson(e as Map<String, dynamic>))
           .toList(),
     ),
+    followedPersons: $checkedConvert(
+      'followedPersons',
+      (v) => (v as List<dynamic>)
+          .map((e) => Person.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    ),
     savedHeadlines: $checkedConvert(
       'savedHeadlines',
       (v) => (v as List<dynamic>)
@@ -54,6 +60,7 @@ Map<String, dynamic> _$UserContentPreferencesToJson(
       .toList(),
   'followedSources': instance.followedSources.map((e) => e.toJson()).toList(),
   'followedTopics': instance.followedTopics.map((e) => e.toJson()).toList(),
+  'followedPersons': instance.followedPersons.map((e) => e.toJson()).toList(),
   'savedHeadlines': instance.savedHeadlines.map((e) => e.toJson()).toList(),
   'savedHeadlineFilters': instance.savedHeadlineFilters
       .map((e) => e.toJson())
