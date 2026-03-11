@@ -39,6 +39,13 @@ enum KpiCardId {
   /// KPI card for total followers across all sources.
   contentSourcesTotalFollowers,
 
+  // Persons Tab
+  /// KPI card for the total number of person records available in the system.
+  contentPersonsTotal,
+
+  /// KPI card for total followers across all persons.
+  contentPersonsTotalFollowers,
+
   // Topics Tab
   /// KPI card for total unique topics.
   contentTopicsTotalTopics,
