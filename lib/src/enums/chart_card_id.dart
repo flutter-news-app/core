@@ -50,6 +50,16 @@ enum ChartCardId {
   /// Chart for engagement by source type.
   contentSourcesEngagementByType,
 
+  // Persons Tab
+  /// Chart tracking how frequently persons are mentioned in headlines.
+  contentPersonsMentionsOverTime,
+
+  /// Chart for user engagement (likes/comments) categorized by person.
+  contentPersonsEngagementByEntity,
+
+  /// Chart for headline views categorized by person.
+  contentHeadlinesViewsByPerson,
+
   // Topics Tab
   /// A bar chart showing the count of headlines categorized by whether they are
   /// marked as 'breaking news' (isBreaking: true) or not. This offers a view
