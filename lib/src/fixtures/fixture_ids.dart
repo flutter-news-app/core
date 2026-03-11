@@ -36,6 +36,10 @@ const kUser8Id = 'usr_generic_00000000000008';
 const kUser9Id = 'usr_generic_00000000000009';
 const kUser10Id = 'usr_generic_00000000000010';
 
+// --- Person Fixture IDs ---
+const kPersonId1 = '6643b21ca4a4e6e1a8e7b9a1';
+const kPersonId2 = '6643b21ca4a4e6e1a8e7b9a2';
+
 // --- Country Fixture IDs ---
 const kAfghanistanId = '6643b21ca4a4e6e1a8e7b1c4';
 const kAlandIslandsId = '6643b21ca4a4e6e1a8e7b1c5';
