@@ -10,6 +10,7 @@ export 'headlines.dart';
 export 'in_app_notifications.dart';
 export 'kpi_cards.dart';
 export 'languages.dart';
+export 'persons.dart';
 export 'ranked_list_cards.dart';
 export 'remote_configs.dart';
 export 'reports.dart';
