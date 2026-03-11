@@ -22,6 +22,10 @@ enum LimitedAction {
   @JsonValue('followCountry')
   followCountry,
 
+  /// The action of following a person.
+  @JsonValue('followPerson')
+  followPerson,
+
   /// The action of saving a filter.
   @JsonValue('saveFilter')
   saveFilter,
