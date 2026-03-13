@@ -103,7 +103,7 @@ void main() {
       });
 
       test('props list should contain all relevant fields', () {
-        expect(headlineFixture.props.length, 14);
+        expect(headlineFixture.props.length, 15);
         expect(headlineFixture.props, [
           headlineFixture.id,
           headlineFixture.title,
@@ -116,6 +116,7 @@ void main() {
           headlineFixture.topic,
           headlineFixture.isBreaking,
           headlineFixture.mediaAssetId,
+          headlineFixture.lastEnrichedAt,
           headlineFixture.type,
           headlineFixture.mentionedCountries,
           headlineFixture.mentionedPersons,

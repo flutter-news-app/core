@@ -65,9 +65,9 @@ void main() {
 
       // Assert
       expect(capturedOptions.baseUrl, baseUrl);
-      expect(capturedOptions.connectTimeout, const Duration(seconds: 15));
-      expect(capturedOptions.receiveTimeout, const Duration(seconds: 15));
-      expect(capturedOptions.sendTimeout, const Duration(seconds: 15));
+      expect(capturedOptions.connectTimeout, const Duration(seconds: 30));
+      expect(capturedOptions.receiveTimeout, const Duration(seconds: 30));
+      expect(capturedOptions.sendTimeout, const Duration(seconds: 30));
 
       verify(() => mockDio.interceptors.addAll(any())).called(1);
     });
@@ -106,9 +106,7 @@ void main() {
             cancelToken: null,
           ),
         ).called(1);
-        verify(
-          () => mockLogger.info('GET request to $path successful. Status: 200'),
-        ).called(1);
+        verify(() => mockLogger.info('GET $path [200]')).called(1);
       });
 
       test(
@@ -133,9 +131,7 @@ void main() {
             throwsA(isA<UnauthorizedException>()),
           );
           verify(
-            () => mockLogger.severe(
-              'GET request to $path failed with HttpException: $exception',
-            ),
+            () => mockLogger.severe('GET $path failed: $exception'),
           ).called(1);
         },
       );
@@ -161,9 +157,8 @@ void main() {
           throwsA(isA<DioException>()),
         );
         verify(
-          () => mockLogger.severe(
-            'GET request to $path failed with DioException: $exception',
-          ),
+          () =>
+              mockLogger.severe('GET $path failed (Dio): ${exception.message}'),
         ).called(1);
       });
     });

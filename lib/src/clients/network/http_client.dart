@@ -30,17 +30,17 @@ class HttpClient {
     required String baseUrl,
     required TokenProvider tokenProvider,
     Dio? dioInstance,
+    BaseOptions? options,
     List<Interceptor>? interceptors,
     Logger? logger,
   }) : _dio = dioInstance ?? Dio(),
        _logger = logger ?? Logger('HttpClient') {
     // Configure base options
-    _dio.options = BaseOptions(
-      baseUrl: baseUrl,
-      connectTimeout: const Duration(seconds: 15),
-      receiveTimeout: const Duration(seconds: 15),
-      sendTimeout: const Duration(seconds: 15),
-    );
+    _dio.options = options ?? _dio.options;
+    _dio.options.baseUrl = baseUrl;
+    _dio.options.connectTimeout ??= const Duration(seconds: 30);
+    _dio.options.receiveTimeout ??= const Duration(seconds: 30);
+    _dio.options.sendTimeout ??= const Duration(seconds: 30);
 
     // Set the appropriate HttpClientAdapter
     _dio.httpClientAdapter = createAdapter();
@@ -80,7 +80,9 @@ class HttpClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    _logger.info('GET request to: $path, Query Parameters: $queryParameters');
+    _logger
+      ..info('GET $path')
+      ..fine('Query: $queryParameters');
     try {
       final response = await _dio.get<T>(
         path,
@@ -88,19 +90,15 @@ class HttpClient {
         options: options,
         cancelToken: cancelToken,
       );
-      _logger.info(
-        'GET request to $path successful. Status: ${response.statusCode}',
-      );
+      _logger.info('GET $path [${response.statusCode}]');
       // Dio automatically throws for non-2xx, ErrorInterceptor maps it
       return response.data as T;
     } on DioException catch (e) {
       if (e.error is HttpException) {
-        _logger.severe(
-          'GET request to $path failed with HttpException: ${e.error}',
-        );
+        _logger.severe('GET $path failed: ${e.error}');
         throw e.error!;
       }
-      _logger.severe('GET request to $path failed with DioException: $e');
+      _logger.severe('GET $path failed (Dio): ${e.message}');
       rethrow;
     }
   }
@@ -122,9 +120,9 @@ class HttpClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    _logger.info(
-      'POST request to: $path, Query Parameters: $queryParameters, Data: $data',
-    );
+    _logger
+      ..info('POST $path')
+      ..fine('Query: $queryParameters, Data: ${_summarize(data)}');
     try {
       final response = await _dio.post<T>(
         path,
@@ -133,18 +131,14 @@ class HttpClient {
         options: options,
         cancelToken: cancelToken,
       );
-      _logger.info(
-        'POST request to $path successful. Status: ${response.statusCode}',
-      );
+      _logger.info('POST $path [${response.statusCode}]');
       return response.data as T;
     } on DioException catch (e) {
       if (e.error is HttpException) {
-        _logger.severe(
-          'POST request to $path failed with HttpException: ${e.error}',
-        );
+        _logger.severe('POST $path failed: ${e.error}');
         throw e.error!;
       }
-      _logger.severe('POST request to $path failed with DioException: $e');
+      _logger.severe('POST $path failed (Dio): ${e.message}');
       rethrow;
     }
   }
@@ -166,9 +160,9 @@ class HttpClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    _logger.info(
-      'PUT request to: $path, Query Parameters: $queryParameters, Data: $data',
-    );
+    _logger
+      ..info('PUT $path')
+      ..fine('Query: $queryParameters, Data: ${_summarize(data)}');
     try {
       final response = await _dio.put<T>(
         path,
@@ -177,18 +171,14 @@ class HttpClient {
         options: options,
         cancelToken: cancelToken,
       );
-      _logger.info(
-        'PUT request to $path successful. Status: ${response.statusCode}',
-      );
+      _logger.info('PUT $path [${response.statusCode}]');
       return response.data as T;
     } on DioException catch (e) {
       if (e.error is HttpException) {
-        _logger.severe(
-          'PUT request to $path failed with HttpException: ${e.error}',
-        );
+        _logger.severe('PUT $path failed: ${e.error}');
         throw e.error!;
       }
-      _logger.severe('PUT request to $path failed with DioException: $e');
+      _logger.severe('PUT $path failed (Dio): ${e.message}');
       rethrow;
     }
   }
@@ -210,9 +200,9 @@ class HttpClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    _logger.info(
-      'DELETE request to: $path, Query Parameters: $queryParameters, Data: $data',
-    );
+    _logger
+      ..info('DELETE $path')
+      ..fine('Query: $queryParameters');
     try {
       final response = await _dio.delete<T>(
         path,
@@ -221,19 +211,24 @@ class HttpClient {
         options: options,
         cancelToken: cancelToken,
       );
-      _logger.info(
-        'DELETE request to $path successful. Status: ${response.statusCode}',
-      );
+      _logger.info('DELETE $path [${response.statusCode}]');
       return response.data as T;
     } on DioException catch (e) {
       if (e.error is HttpException) {
-        _logger.severe(
-          'DELETE request to $path failed with HttpException: ${e.error}',
-        );
+        _logger.severe('DELETE $path failed: ${e.error}');
         throw e.error!;
       }
-      _logger.severe('DELETE request to $path failed with DioException: $e');
+      _logger.severe('DELETE $path failed (Dio): ${e.message}');
       rethrow;
     }
+  }
+
+  String _summarize(dynamic data) {
+    if (data == null) return 'null';
+    final str = data.toString();
+    if (str.length > 200) {
+      return '${str.substring(0, 200)}... (truncated)';
+    }
+    return str;
   }
 }

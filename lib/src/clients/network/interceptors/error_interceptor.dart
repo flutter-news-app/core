@@ -102,6 +102,9 @@ class ErrorInterceptor extends Interceptor {
           responseData['message'] is String) {
         return responseData['message'] as String;
       }
+      if (responseData.containsKey('msg') && responseData['msg'] is String) {
+        return responseData['msg'] as String;
+      }
       if (responseData.containsKey('error') &&
           responseData['error'] is String) {
         return responseData['error'] as String;
