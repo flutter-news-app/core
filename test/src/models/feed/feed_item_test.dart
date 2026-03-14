@@ -7,10 +7,13 @@ void main() {
     final mockTopic = getTopicsFixturesData().first;
     final mockSource = getSourcesFixturesData().first;
     final mockCountry = countriesFixturesData.first;
-    const mockPerson = Person(
+    final mockPerson = Person(
       id: 'person-1',
-      name: {SupportedLanguage.en: 'John Doe'},
-      description: {SupportedLanguage.en: 'An interesting person.'},
+      name: const {SupportedLanguage.en: 'John Doe'},
+      description: const {SupportedLanguage.en: 'An interesting person.'},
+      createdAt: DateTime(2024, 1, 1),
+      updatedAt: DateTime(2024, 1, 1),
+      status: ContentStatus.active,
       imageUrl: 'https://example.com/person/1.jpg',
     );
 
@@ -42,7 +45,7 @@ void main() {
     final mockContentCollectionPerson = ContentCollectionItem<Person>(
       id: 'cc-person-1',
       decoratorType: FeedDecoratorType.suggestedTopics, // Placeholder
-      items: const [mockPerson],
+      items: [mockPerson],
       title: const {SupportedLanguage.en: 'Mentioned People'},
     );
 

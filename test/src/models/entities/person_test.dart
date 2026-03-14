@@ -34,6 +34,11 @@ void main() {
         expect(updatedPerson.description, equals(personFixture.description));
       });
 
+      test('updates status', () {
+        final updated = personFixture.copyWith(status: ContentStatus.ingested);
+        expect(updated.status, equals(ContentStatus.ingested));
+      });
+
       test('updates nullable fields using ValueWrapper', () {
         final updatedPerson = personFixture.copyWith(
           imageUrl: const ValueWrapper('https://example.com/new.png'),
@@ -68,6 +73,9 @@ void main() {
           personFixture.id,
           personFixture.name,
           personFixture.description,
+          personFixture.createdAt,
+          personFixture.updatedAt,
+          personFixture.status,
           personFixture.imageUrl,
           personFixture.mediaAssetId,
           personFixture.type,
