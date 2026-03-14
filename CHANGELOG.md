@@ -7,6 +7,8 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-03-14
+
 ### Added
 - **feat(models)**: Introduced the `Person` entity to represent individuals
   mentioned in news content.
