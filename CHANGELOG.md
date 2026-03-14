@@ -14,7 +14,9 @@ and this project adheres to Semantic Versioning.
   `Person` entity.
 - **feat(enums)**: Added `ContentType.person`, `LimitedAction.followPerson`,
   `MediaAssetEntityType.person`, and `MediaAssetPurpose.personPhoto`.
-
+- **feat(enums)**: Added `ContentStatus.ingested` to identify raw content
+  awaiting asynchronous AI enrichment.
+  
 ### Changed
 - **BREAKING refactor(models)**: Refactored `Headline` to replace singular
   `eventCountry` with plural `mentionedCountries` and `mentionedPersons`.

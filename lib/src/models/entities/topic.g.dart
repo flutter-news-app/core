@@ -78,4 +78,5 @@ const _$ContentStatusEnumMap = {
   ContentStatus.active: 'active',
   ContentStatus.draft: 'draft',
   ContentStatus.archived: 'archived',
+  ContentStatus.ingested: 'ingested',
 };

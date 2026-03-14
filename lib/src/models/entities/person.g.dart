@@ -26,6 +26,18 @@ Person _$PersonFromJson(Map<String, dynamic> json) => $checkedCreate(
               MapEntry($enumDecode(_$SupportedLanguageEnumMap, k), e as String),
         ),
       ),
+      createdAt: $checkedConvert(
+        'createdAt',
+        (v) => const DateTimeConverter().fromJson(v as String),
+      ),
+      updatedAt: $checkedConvert(
+        'updatedAt',
+        (v) => const DateTimeConverter().fromJson(v as String),
+      ),
+      status: $checkedConvert(
+        'status',
+        (v) => $enumDecode(_$ContentStatusEnumMap, v),
+      ),
       imageUrl: $checkedConvert('imageUrl', (v) => v as String?),
       mediaAssetId: $checkedConvert('mediaAssetId', (v) => v as String?),
     );
@@ -41,6 +53,9 @@ Map<String, dynamic> _$PersonToJson(Person instance) => <String, dynamic>{
   'description': instance.description.map(
     (k, e) => MapEntry(_$SupportedLanguageEnumMap[k]!, e),
   ),
+  'createdAt': const DateTimeConverter().toJson(instance.createdAt),
+  'updatedAt': const DateTimeConverter().toJson(instance.updatedAt),
+  'status': _$ContentStatusEnumMap[instance.status]!,
   'imageUrl': ?instance.imageUrl,
   'mediaAssetId': ?instance.mediaAssetId,
 };
@@ -56,4 +71,11 @@ const _$SupportedLanguageEnumMap = {
   SupportedLanguage.zh: 'zh',
   SupportedLanguage.hi: 'hi',
   SupportedLanguage.ja: 'ja',
+};
+
+const _$ContentStatusEnumMap = {
+  ContentStatus.active: 'active',
+  ContentStatus.draft: 'draft',
+  ContentStatus.archived: 'archived',
+  ContentStatus.ingested: 'ingested',
 };

@@ -15,4 +15,8 @@ enum ContentStatus {
   /// The entity has been archived and is not visible in normal queries.
   @JsonValue('archived')
   archived,
+
+  /// The entity has been newly ingested and is awaiting AI enrichment.
+  @JsonValue('ingested')
+  ingested,
 }

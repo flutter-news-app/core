@@ -3,10 +3,13 @@ import 'package:test/test.dart';
 
 void main() {
   group('Headline Model', () {
-    const mockPerson = Person(
+    final mockPerson = Person(
       id: 'person-1',
-      name: {SupportedLanguage.en: 'John Doe'},
-      description: {SupportedLanguage.en: 'An interesting person.'},
+      name: const {SupportedLanguage.en: 'John Doe'},
+      description: const {SupportedLanguage.en: 'An interesting person.'},
+      createdAt: DateTime(2024, 1, 1),
+      updatedAt: DateTime(2024, 1, 1),
+      status: ContentStatus.active,
     );
 
     final headlineFixture = Headline(
@@ -22,7 +25,7 @@ void main() {
       isBreaking: false,
       mediaAssetId: 'media-1',
       mentionedCountries: [countriesFixturesData.first],
-      mentionedPersons: const [mockPerson],
+      mentionedPersons: [mockPerson],
     );
 
     final headlineJson = headlineFixture.toJson();
@@ -103,7 +106,7 @@ void main() {
       });
 
       test('props list should contain all relevant fields', () {
-        expect(headlineFixture.props.length, 15);
+        expect(headlineFixture.props.length, 14);
         expect(headlineFixture.props, [
           headlineFixture.id,
           headlineFixture.title,
@@ -116,7 +119,6 @@ void main() {
           headlineFixture.topic,
           headlineFixture.isBreaking,
           headlineFixture.mediaAssetId,
-          headlineFixture.lastEnrichedAt,
           headlineFixture.type,
           headlineFixture.mentionedCountries,
           headlineFixture.mentionedPersons,

@@ -28,7 +28,6 @@ class Headline extends FeedItem {
     this.mentionedPersons = const [],
     this.imageUrl,
     this.mediaAssetId,
-    this.lastEnrichedAt,
   }) : super(type: 'headline');
 
   /// Creates a [Headline] instance from a JSON map.
@@ -83,12 +82,6 @@ class Headline extends FeedItem {
   @JsonKey(includeIfNull: false)
   final String? mediaAssetId;
 
-  /// The timestamp recording when this headline was last enriched with
-  /// additional metadata.
-  @DateTimeConverter()
-  @JsonKey(includeIfNull: false)
-  final DateTime? lastEnrichedAt;
-
   /// A list of countries mentioned in the headline.
   final List<Country> mentionedCountries;
 
@@ -115,7 +108,6 @@ class Headline extends FeedItem {
     topic,
     isBreaking,
     mediaAssetId,
-    lastEnrichedAt,
     type,
     mentionedCountries,
     mentionedPersons,
@@ -138,7 +130,6 @@ class Headline extends FeedItem {
     Topic? topic,
     bool? isBreaking,
     ValueWrapper<String?>? mediaAssetId,
-    ValueWrapper<DateTime?>? lastEnrichedAt,
     List<Country>? mentionedCountries,
     List<Person>? mentionedPersons,
   }) {
@@ -150,9 +141,6 @@ class Headline extends FeedItem {
       mediaAssetId: mediaAssetId != null
           ? mediaAssetId.value
           : this.mediaAssetId,
-      lastEnrichedAt: lastEnrichedAt != null
-          ? lastEnrichedAt.value
-          : this.lastEnrichedAt,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       status: status ?? this.status,

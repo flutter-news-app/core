@@ -10,6 +10,7 @@ void main() {
           ContentStatus.active,
           ContentStatus.draft,
           ContentStatus.archived,
+          ContentStatus.ingested,
         ]),
       );
     });
@@ -18,12 +19,14 @@ void main() {
       expect(ContentStatus.active.name, 'active');
       expect(ContentStatus.draft.name, 'draft');
       expect(ContentStatus.archived.name, 'archived');
+      expect(ContentStatus.ingested.name, 'ingested');
     });
 
     test('can be created from string values', () {
       expect(ContentStatus.values.byName('active'), ContentStatus.active);
       expect(ContentStatus.values.byName('draft'), ContentStatus.draft);
       expect(ContentStatus.values.byName('archived'), ContentStatus.archived);
+      expect(ContentStatus.values.byName('ingested'), ContentStatus.ingested);
     });
   });
 }

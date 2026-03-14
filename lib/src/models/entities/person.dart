@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:core/src/utils/date_time_converter.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
@@ -15,6 +16,9 @@ class Person extends FeedItem {
     required this.id,
     required this.name,
     required this.description,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.status,
     this.imageUrl,
     this.mediaAssetId,
   }) : super(type: 'person');
@@ -30,6 +34,18 @@ class Person extends FeedItem {
 
   /// A short biography or description of the person.
   final Map<SupportedLanguage, String> description;
+
+  /// The internal timestamp recording when this person was first ingested.
+  @DateTimeConverter()
+  final DateTime createdAt;
+
+  /// The internal timestamp of the last update to this person record.
+  @DateTimeConverter()
+  final DateTime updatedAt;
+
+  /// The current lifecycle status of the person.
+  /// Defaults to `active`.
+  final ContentStatus status;
 
   /// The URL for a photo of the person.
   @JsonKey(includeIfNull: false)
@@ -51,6 +67,9 @@ class Person extends FeedItem {
     id,
     name,
     description,
+    createdAt,
+    updatedAt,
+    status,
     imageUrl,
     mediaAssetId,
     type,
@@ -61,6 +80,9 @@ class Person extends FeedItem {
     String? id,
     Map<SupportedLanguage, String>? name,
     Map<SupportedLanguage, String>? description,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    ContentStatus? status,
     ValueWrapper<String?>? imageUrl,
     ValueWrapper<String?>? mediaAssetId,
   }) {
@@ -68,6 +90,9 @@ class Person extends FeedItem {
       id: id ?? this.id,
       name: name ?? this.name,
       description: description ?? this.description,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      status: status ?? this.status,
       imageUrl: imageUrl != null ? imageUrl.value : this.imageUrl,
       mediaAssetId: mediaAssetId != null
           ? mediaAssetId.value
